@@ -16,15 +16,13 @@ import com.leventsurer.lastproductlogin.util.constants.Cons.CATEGORY_NAME_BUNDLE
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
+// The screen where the categories coming from the API are listed and we can filter the products by category.
 @AndroidEntryPoint
 class FilterFragment : Fragment() {
     private var _binding: FragmentFilterBinding? = null
     private val binding: FragmentFilterBinding get() = _binding!!
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
     private var categories = ArrayList<CategoryStatus>()
-
-    //private var adapterList = ArrayList<String>()
     private var chosenCategory: String? = null
 
     private lateinit var adapter: CategoryAdapter
@@ -44,18 +42,13 @@ class FilterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Performing operations when the filter button is pressed
+        choseFilterOnClickHandler()
 
-        binding.chooseFilter.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set(
-                CATEGORY_NAME_BUNDLE_KEY,
-                chosenCategory
-            )
-            findNavController().popBackStack()
-        }
 
         mainActivityViewModel.getCategories()
         setupAdapter()
-
+        //Bringing categories from api
         mainActivityViewModel.categories.observe(viewLifecycleOwner) { response ->
 
             for (category in response) {
@@ -67,6 +60,17 @@ class FilterFragment : Fragment() {
 
     }
 
+    private fun choseFilterOnClickHandler() {
+        binding.chooseFilter.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                CATEGORY_NAME_BUNDLE_KEY,
+                chosenCategory
+            )
+            findNavController().popBackStack()
+        }
+    }
+
+    //Connecting the view with the adapter
     private fun setupAdapter() {
 
         binding.categoriesList.layoutManager = LinearLayoutManager(context)
@@ -80,7 +84,7 @@ class FilterFragment : Fragment() {
 
     }
 
-    //kategori seçimini yöneten fonksiyon
+    //Function that manages category selection
     private fun choseCategoryToFilter(categoryStatus: CategoryStatus, position: Int) {
         for (i in 0 until categories.size) {
             categories[i].isChoosen = i == position

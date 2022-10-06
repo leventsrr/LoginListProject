@@ -20,7 +20,7 @@ import com.leventsurer.lastproductlogin.util.adapters.ProductAdapter
 import com.leventsurer.lastproductlogin.util.constants.Cons.CATEGORY_NAME_BUNDLE_KEY
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
+//screen where products are listed and operations such as sorting are done
 @AndroidEntryPoint
 class ProductsListFragment : Fragment() {
     private var _binding: FragmentProductListBinding? = null
@@ -111,7 +111,7 @@ class ProductsListFragment : Fragment() {
 
         }
     }
-
+    //screen where products are listed and operations such as sorting are done
     private fun initialize() {
         (requireActivity() as MainActivity).showBottomNavigation()
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>(
@@ -122,7 +122,7 @@ class ProductsListFragment : Fragment() {
             }
         setupProductListRequest()
     }
-
+    //getting products from api
     private fun setupProductListRequest() {
         categoryName?.let {
             mainActivityViewModel.getProducts(it)
@@ -130,7 +130,9 @@ class ProductsListFragment : Fragment() {
             mainActivityViewModel.getProducts(null)
         }
     }
+    private fun setupBottomSheet(){
 
+    }
     private fun setupSearch() {
         searchView = binding.searchView
         searchView.clearFocus()
@@ -141,7 +143,6 @@ class ProductsListFragment : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                Log.e("textChange", "textChange geldi")
                 filterList(newText)
                 return true
             }
@@ -151,12 +152,10 @@ class ProductsListFragment : Fragment() {
         })
     }
 
-    //aranan kelimeye göre filtrelemenin yapılması
+    //filtering products by search word
     private fun filterList(newText: String) {
         val filteredList = ArrayList<ProductItem>()
-        Log.e("adapterList", adapterList.toString())
         for (productItem: ProductItem in adapterList) {
-
             if (productItem.title!!.lowercase().contains(newText.lowercase())) {
                 filteredList.add(productItem)
             }
@@ -168,7 +167,7 @@ class ProductsListFragment : Fragment() {
         }
     }
 
-    //adapter ve ProductListFragment bağlantısı
+    //Connecting adapter and ProductListFragment
     private fun setupAdapter() {
         binding.products.layoutManager = GridLayoutManager(context, 2)
         adapter = ProductAdapter()
@@ -177,37 +176,44 @@ class ProductsListFragment : Fragment() {
             goToDetailFragment(it)
         }
     }
-
-    fun sortTheProductArray(
+    //sort products by price
+    private fun sortTheProductArray(
         originalArray: ArrayList<ProductItem>,
         isdecreasingPrice: Boolean
     ): ArrayList<ProductItem> {
 
-        if (isdecreasingPrice) {
-            val sortingArray = originalArray.sortedByDescending { it.price }
-            val sortedArray = ArrayList<ProductItem>()
+        return if (isdecreasingPrice) {
+            sortDescending(originalArray)
+        } 
+        else {
+            sortIncreasing(originalArray)
 
-            for (product: ProductItem in sortingArray) {
-
-                sortedArray.add(product)
-            }
-            Log.e("Sıralam", sortedArray.toString())
-            return sortedArray
-        } else {
-            val sortingArray = originalArray.sortedWith(compareBy { it.price })
-            val sortedArray = ArrayList<ProductItem>()
-
-            for (product: ProductItem in sortingArray) {
-
-                sortedArray.add(product)
-            }
-            Log.e("Sıralam", sortedArray.toString())
-            return sortedArray
         }
     }
 
+    private fun sortIncreasing(originalArray: ArrayList<ProductItem>):ArrayList<ProductItem> {
+        val sortingArray = originalArray.sortedWith(compareBy { it.price })
+        val sortedArray = ArrayList<ProductItem>()
 
-    //Tıklanılan ürünün detay sayfasına yönlendirme yapılması
+        for (product: ProductItem in sortingArray) {
+
+            sortedArray.add(product)
+        }
+        Log.e("Sıralam", sortedArray.toString())
+        return sortedArray
+    }
+
+    private fun sortDescending(originalArray: ArrayList<ProductItem>): ArrayList<ProductItem> {
+        val sortingArray = originalArray.sortedByDescending { it.price }
+        val sortedArray=ArrayList<ProductItem>()
+        for (product: ProductItem in sortingArray) {
+            sortedArray.add(product)
+        }
+        return sortedArray
+    }
+
+
+    //Redirecting to the detail page of the clicked product
     private fun goToDetailFragment(productId: Int) {
         val action =
             ProductsListFragmentDirections.actionProductListFragment3ToProductDetailFragment(

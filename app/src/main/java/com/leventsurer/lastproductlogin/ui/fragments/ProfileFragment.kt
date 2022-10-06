@@ -15,22 +15,28 @@ class ProfileFragment : Fragment() {
     private lateinit var prefManager:SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
         binding = FragmentProfileBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initializeSharedPreferences()
+        handleClickEvent()
+    }
+
+    private fun initializeSharedPreferences() {
         prefManager = SharedPreferences(requireContext())
+    }
+
+    private fun handleClickEvent() {
         binding.apply {
             logoutButton.setOnClickListener {
                 logOut()
@@ -38,12 +44,18 @@ class ProfileFragment : Fragment() {
             }
         }
     }
-    //Kullanıcı hesabından çıkılması
+
+    //Logout Account
     private fun logOut(){
         prefManager.removeData()
+        returnLoginScreen()
+
+
+    }
+
+    private fun returnLoginScreen() {
         val action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
         findNavController().navigate(action)
-
     }
 
 }

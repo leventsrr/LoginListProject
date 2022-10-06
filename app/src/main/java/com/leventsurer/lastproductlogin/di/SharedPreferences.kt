@@ -6,24 +6,23 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 class SharedPreferences(context: Context) {
-    val sharedPreferences: SharedPreferences =
+    private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("myPref", AppCompatActivity.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
-
+    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
+    //function used to create sharedPreferences if there is no previously created data
     fun createSharedPref(isLogin:Boolean){
-        editor?.putBoolean("isLogin",isLogin)
-        editor?.commit()
+        editor.putBoolean("isLogin",isLogin)
+        editor.commit()
     }
 
-
-    fun isLogin(): Boolean? {
+    //if this methods return true,shared preferences has login data
+    fun isLogin(): Boolean {
         return sharedPreferences.getBoolean("isLogin", false)
     }
-
+    //if user logout this function delete shared preferences data
     fun removeData(){
-        editor?.clear()
-        editor?.commit()
-        Log.e("exit","çıktı")
+        editor.clear()
+        editor.commit()
     }
 
 

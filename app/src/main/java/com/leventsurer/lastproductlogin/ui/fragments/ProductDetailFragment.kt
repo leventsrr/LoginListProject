@@ -17,7 +17,7 @@ import com.leventsurer.lastproductlogin.databinding.FragmentProductDetailBinding
 import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
+//Page showing product detail
 @AndroidEntryPoint
 class ProductDetailFragment : Fragment() {
     private var _binding: FragmentProductDetailBinding? = null
@@ -35,7 +35,7 @@ class ProductDetailFragment : Fragment() {
         }
 
     }
-
+   // Bringing product details from another page
     private fun handleArguments() {
         arguments?.let {
             productId = ProductDetailFragmentArgs.fromBundle(it).productId
@@ -64,11 +64,12 @@ class ProductDetailFragment : Fragment() {
         }
         (requireActivity() as MainActivity).hideBottomNavigation()
     }
-
+    //Requesting product detail from API according to id
     private fun setupRequest() {
         mainActivityViewModel.getProductDetail(productId)
     }
 
+    //Managing incoming data
     private fun subscribeObserve() {
         mainActivityViewModel.productDetail.observe(viewLifecycleOwner) { response ->
             adapterList = response
@@ -77,6 +78,7 @@ class ProductDetailFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
+    //Placing incoming data where necessary in XML
     private fun handleResponse() {
 
         adapterList?.let {
@@ -92,6 +94,7 @@ class ProductDetailFragment : Fragment() {
 
     }
 
+    //Placing incoming data where necessary in XML
     private fun loadProductImage(fragmentContext: Context,productDetail:ProductDetail){
         Glide.with(fragmentContext).load(productDetail.image).into(binding.productDetailImage)
     }

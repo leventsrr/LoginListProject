@@ -1,7 +1,7 @@
 package com.leventsurer.lastproductlogin.model.getAllProducts
 
 import com.google.gson.annotations.SerializedName
-
+//class used for the response of the request from which all products are called
 data class ProductItem(
 
     @SerializedName("id") var id: Int? = null,

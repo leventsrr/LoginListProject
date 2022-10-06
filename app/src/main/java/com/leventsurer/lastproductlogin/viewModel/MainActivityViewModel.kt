@@ -26,7 +26,8 @@ class MainActivityViewModel @Inject constructor(private val repository: ProductR
     val categories: LiveData<ArrayList<String>> get() = _categories
 
 
-    //Get all products
+
+    //Get all products or products by category
     fun getProducts(categoryName: String?) = viewModelScope.launch {
         categoryName?.let {
             getProductByCategorySafeCall(it)
@@ -34,14 +35,8 @@ class MainActivityViewModel @Inject constructor(private val repository: ProductR
             getProductSafeCall()
         }
     }
-
     private suspend fun getProductSafeCall() {
         _product.value = repository.getProducts().body()
-    }
-
-    //Get product by category
-    fun getProductByCategory(categoryName: String) = viewModelScope.launch {
-        getProductByCategorySafeCall(categoryName)
     }
 
     private suspend fun getProductByCategorySafeCall(categoryName: String) {
@@ -50,7 +45,6 @@ class MainActivityViewModel @Inject constructor(private val repository: ProductR
         }
 
     }
-
 
     //Get only one product detail
     fun getProductDetail(productId: Int) = viewModelScope.launch {

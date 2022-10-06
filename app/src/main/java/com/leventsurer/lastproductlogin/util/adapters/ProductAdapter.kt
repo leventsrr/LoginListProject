@@ -35,28 +35,35 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
         context = parent.context
-        Log.e("DENEME", "5")
         val binding = ProductCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductHolder(binding)
 
     }
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
+        setupViewHolder(holder,position)
+
+        //Tıklanan ürünün id numarasının detay sayfasına gönderilmesi
+        handleItemOnClick(holder,position)
+    }
+
+    private fun setupViewHolder(holder:ProductHolder,position:Int) {
         holder.binding.apply {
             Glide.with(context).load(list[position].image).into(productImage)
             Log.e("DENEME", "3")
             productTitle.text = list[position].title
             productPrice.text = "${list[position].price.toString()} TL"
         }
+    }
 
-        //Tıklanan ürünün id numarasının detay sayfasına gönderilmesi
+    private fun handleItemOnClick(holder:ProductHolder,position:Int) {
         holder.itemView.setOnClickListener{
             onClickListenerCustom?.let {
-               if(list[position].id != null){
-                   it(list[position].id!!)
-               }else{
-                   it(-1)
-               }
+                if(list[position].id != null){
+                    it(list[position].id!!)
+                }else{
+                    it(-1)
+                }
             }
         }
     }

@@ -12,7 +12,7 @@ import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.databinding.FragmentLoginBinding
 import com.leventsurer.lastproductlogin.di.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
-
+//login screen
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
@@ -26,7 +26,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(inflater,container,false)
         return binding.root
@@ -36,25 +36,23 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.loginButton.setOnClickListener{
+        loginButtonClickHandler()
 
-            prefManager = SharedPreferences(requireContext())
-            prefManager.createSharedPref(true)
-            findNavController().navigate(R.id.action_loginFragment_to_productListFragment3)
-        }
 
         (requireActivity() as MainActivity).hideBottomNavigation()
 
 
 
     }
+    //Actions performed when the login button is pressed
+    private fun loginButtonClickHandler() {
+        binding.loginButton.setOnClickListener{
 
-
-
-
-
-
-
+            prefManager = SharedPreferences(requireContext())
+            prefManager.createSharedPref(true)
+            findNavController().navigate(R.id.action_loginFragment_to_productListFragment3)
+        }
+    }
 
 
 }

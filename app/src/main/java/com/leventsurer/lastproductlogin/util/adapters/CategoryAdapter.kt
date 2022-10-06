@@ -5,6 +5,8 @@ import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.leventsurer.lastproductlogin.databinding.FilterCategoryBinding
 import com.leventsurer.lastproductlogin.model.CategoryStatus
@@ -21,12 +23,6 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>()
     private var _list = ArrayList<CategoryStatus>()
     val list get() = _list
 
-    /*var list =ArrayList<String>()
-
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }*/
     @SuppressLint("NotifyDataSetChanged")
     fun setList(newList: ArrayList<CategoryStatus>) {
         _list.clear()
@@ -47,18 +43,26 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>()
         holder.binding.apply {
 
             category.text = list[position].categoryName
+            changeCategoryColor(position,category)
+            categoryClickHandle(clCategory,position)
 
-            if (list[position].isChoosen) {
-                category.setTextColor(Color.parseColor("#FDBF00"))
-            } else {
-                category.setTextColor(Color.parseColor("#52565C"))
-            }
 
-            clCategory.setOnClickListener {
-                onClickListenerCustom?.let {
-                    it(list[position], position)
-                }
+        }
+    }
+
+    private fun categoryClickHandle(clCategory:ConstraintLayout,position:Int) {
+        clCategory.setOnClickListener {
+            onClickListenerCustom?.let {
+                it(list[position], position)
             }
+        }
+    }
+
+    private fun changeCategoryColor(position:Int,category:TextView) {
+        if (list[position].isChoosen) {
+            category.setTextColor(Color.parseColor("#FDBF00"))
+        } else {
+            category.setTextColor(Color.parseColor("#52565C"))
         }
     }
 
