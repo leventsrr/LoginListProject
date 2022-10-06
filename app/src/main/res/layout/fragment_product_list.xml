@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.ProductListFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".view.ProductListActivity">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="370dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/rounded_corner_menu"
+                android:elevation="5dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="370dp"
+                    android:layout_height="51dp"
+                    android:orientation="horizontal">
+
+                   <!-- <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="15.96dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/ic_search" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="278.29dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web"
+                        android:gravity="center|left"
+                        android:text="Kategori veya ürün ara"
+                        android:textColor="#9C9EB9"
+                        android:textFontWeight="600"
+                        android:textSize="16sp" />-->
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconifiedByDefault="false"
+                        app:queryHint="Kategori veya Ürün Ara" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:background="@drawable/green_radious"
+                        android:id="@+id/view7"
+                        android:layout_width="61.5dp"
+                        android:layout_height="3.3dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="#27AE60" />
+
+                    <View
+                        android:id="@+id/view8"
+                        android:layout_width="61.5dp"
+                        android:layout_height="3.3dp"
+                        android:layout_weight="1"
+                        android:background="#2F80ED" />
+
+                    <View
+                        android:id="@+id/view9"
+                        android:layout_width="61.5dp"
+                        android:layout_height="3.3dp"
+                        android:layout_weight="1"
+                        android:background="#F2994A" />
+
+                    <View
+                        android:id="@+id/view10"
+                        android:layout_width="61.5dp"
+                        android:layout_height="3.3dp"
+                        android:layout_weight="1"
+                        android:background="#EB5757" />
+
+                    <View
+                        android:id="@+id/view11"
+                        android:layout_width="61.5dp"
+                        android:layout_height="3.3dp"
+                        android:layout_weight="1"
+                        android:background="#BB6BD9" />
+
+                    <View
+
+                        android:id="@+id/view12"
+                        android:layout_width="61.5dp"
+                        android:layout_height="3.3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_radious" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
+                android:background="@drawable/rounded_corner_input"
+                android:elevation="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <LinearLayout
+                    android:id="@+id/sortButton"
+                    android:layout_width="185dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:textAlignment="center">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="20sp"
+                        android:layout_height="20sp"
+                        app:srcCompat="@drawable/ic_sorticon" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="55dp"
+                        android:layout_height="19sp"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/titillium_web"
+                        android:gravity="center"
+                        android:text="Sırala"
+                        android:textAlignment="center"
+                        android:textColor="#7E7E7E"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider7"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="?android:attr/listDivider" />
+
+                <LinearLayout
+                    android:id="@+id/filter"
+                    android:layout_width="185dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@drawable/ic_filtericon" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="@font/titillium_web"
+                        android:text="Filtre"
+                        android:textColor="#7E7E7E"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+
+
+                android:id="@+id/products"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="21dp"
+
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+            <!--<com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView10"
+                        android:layout_width="3dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingHorizontal="30dp"
+                        android:paddingVertical="16dp"
+                        app:srcCompat="@drawable/ic_home" />
+
+                    <ImageView
+                        android:id="@+id/imageView9"
+                        android:layout_width="97dp"
+                        android:layout_height="match_parent"
+                        android:paddingVertical="16dp"
+                        app:srcCompat="@drawable/ic_menu" />
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingVertical="16dp"
+                        app:srcCompat="@drawable/ic_ticket" />
+
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingVertical="16dp"
+                        app:srcCompat="@drawable/ic_profile" />
+
+                </LinearLayout>
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>-->
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

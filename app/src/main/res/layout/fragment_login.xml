@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity"
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="289dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="111dp"
+            android:layout_marginTop="213dp"
+            android:layout_marginEnd="113dp"
+            android:fontFamily="@font/titillium_web_bold"
+            android:text="Hesabına Giriş Yap"
+            android:textAlignment="center"
+            android:textColor="#52565C"
+            android:textFontWeight="600"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/emailText"
+            android:layout_width="318sp"
+            android:layout_height="60sp"
+            android:layout_marginStart="47dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="49dp"
+            android:elevation="2dp"
+            android:ems="10"
+            android:hint="Email"
+            android:background="@drawable/rounded_corner"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <EditText
+
+            android:id="@+id/passwordText"
+            android:layout_width="318sp"
+            android:layout_height="60sp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="48dp"
+            android:elevation="2dp"
+            android:ems="10"
+            android:background="@drawable/rounded_corner"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingHorizontal="94dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailText" />
+
+        <TextView
+            android:id="@+id/forgetPasswordButton"
+            android:layout_width="110sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="256dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="48dp"
+            android:fontFamily="@font/titillium_web"
+            android:text="Şifremi Unuttum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
+            android:layout_width="251sp"
+            android:layout_height="56sp"
+            android:layout_marginStart="82dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="81dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="#2D9CDB"
+            android:fontFamily="@font/titillium_web_bold"
+            android:foregroundTint="#FFFFFF"
+            android:text="Giriş Yap"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forgetPasswordButton" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="125dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="124dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/titillium_web"
+                android:text="Hesabın yok mu?"
+                android:textAlignment="viewEnd" />
+
+            <TextView
+                android:id="@+id/signupButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/titillium_web"
+                android:text="  Kaydol"
+                android:textColor="#2D9CDB"
+                android:textFontWeight="600"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="100sp"
+            android:layout_height="47sp"
+            android:layout_marginStart="157dp"
+            android:layout_marginTop="131dp"
+            android:layout_marginEnd="157dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/backProductListButton"
+            android:layout_width="11.25dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="59dp"
+            android:layout_marginEnd="369dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/back_button" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="6sp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="68dp"
+                android:layout_height="6dp"
+                android:layout_weight="1"
+                android:background="#27AE60"
+                android:backgroundTint="#27AE60" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#2F80ED"
+                android:backgroundTint="#2F80ED" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#F2994A" />
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="68dp"
+                android:layout_height="6dp"
+                android:layout_weight="1"
+                android:background="#EB5757" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#BB6BD9" />
+
+            <View
+                android:id="@+id/view6"
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#56CCF2" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
