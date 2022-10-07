@@ -6,10 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ProductDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-        <!-- Here you put the rest of your current view-->
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -32,7 +28,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/backProductListButton"
+                    android:id="@+id/backToProductListButton"
                     android:layout_width="42dp"
                     android:layout_height="20dp"
                     app:srcCompat="@drawable/back_button" />
@@ -42,7 +38,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/productDetailImage"

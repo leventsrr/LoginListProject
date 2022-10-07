@@ -52,11 +52,11 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    //bottomNavigation sakla
+    //hide bottomNavigation
     fun hideBottomNavigation() {
         binding.bottomNavigationView.visibility = View.GONE
     }
-    //bottomNavigation göster
+    //show bottomNavigation
     fun showBottomNavigation() {
         binding.bottomNavigationView.visibility = View.VISIBLE
     }
@@ -70,11 +70,6 @@ class MainActivity : AppCompatActivity() {
 
         checkLogin()
 
-        //val navController = navHostFragment.navController
-
-        /*val navGraph =
-            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-        navController = navGraph.navController*/
 
     }
 }

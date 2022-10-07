@@ -13,7 +13,7 @@ import com.leventsurer.lastproductlogin.model.getAllProducts.ProductItem
 
 class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     private lateinit var context: Context
-    fun setFilteredList(filteredList:ArrayList<ProductItem>){
+    fun setFilteredList(filteredList: ArrayList<ProductItem>) {
         this.list = filteredList
         //notifyDataSetChanged()
     }
@@ -28,10 +28,10 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     }
 
     var list = ArrayList<ProductItem>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
         context = parent.context
@@ -41,13 +41,17 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     }
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-        setupViewHolder(holder,position)
+        setupViewHolder(holder, position)
 
         //Tıklanan ürünün id numarasının detay sayfasına gönderilmesi
-        handleItemOnClick(holder,position)
+        handleItemOnClick(holder, position)
     }
 
-    private fun setupViewHolder(holder:ProductHolder,position:Int) {
+    private fun setupViewHolder(holder: ProductHolder, position: Int) {
+        bindVariables(holder, position)
+    }
+
+    private fun bindVariables(holder: ProductHolder, position: Int) {
         holder.binding.apply {
             Glide.with(context).load(list[position].image).into(productImage)
             Log.e("DENEME", "3")
@@ -56,12 +60,16 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
         }
     }
 
-    private fun handleItemOnClick(holder:ProductHolder,position:Int) {
-        holder.itemView.setOnClickListener{
+    /** Bu bir metottur! (CTRL ALT Q(
+     *  @author Levent Sürer
+     **/
+    private fun handleItemOnClick(holder: ProductHolder, position: Int) {
+        holder.itemView.setOnClickListener {
             onClickListenerCustom?.let {
-                if(list[position].id != null){
+                if (list[position].id != null) {
                     it(list[position].id!!)
-                }else{
+                } else {
+                    // kotlinci pezo!
                     it(-1)
                 }
             }

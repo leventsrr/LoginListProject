@@ -14,22 +14,26 @@
         >
 
         <LinearLayout
+            android:background="@drawable/product_card_border"
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="10dp"
             android:orientation="vertical"
             android:padding="8dp">
+
             <com.google.android.material.imageview.ShapeableImageView
-                android:shadowRadius="16"
+
                 android:id="@+id/productImage"
                 android:layout_width="179dp"
                 android:layout_height="118dp"
+                android:layout_gravity="center"
                 android:adjustViewBounds="true"
                 android:cropToPadding="false"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/backgrounds/scenic"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent">
+                android:scaleType="centerInside"
+                android:shadowRadius="16"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic">
 
 
             </com.google.android.material.imageview.ShapeableImageView>
@@ -37,7 +41,7 @@
             <TextView
                 android:id="@+id/productTitle"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/titillium_web_bold"
                 android:gravity="start"
                 android:maxLines="2"
@@ -47,14 +51,14 @@
             <View
                 android:id="@+id/view13"
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="3dp" />
 
             <TextView
                 android:id="@+id/productPrice"
                 android:layout_width="match_parent"
                 android:layout_height="22dp"
                 android:fontFamily="@font/lato_bold"
-                android:gravity="start"
+                android:gravity="center"
                 android:maxLines="1"
                 android:textColor="#2D9CDB"
                 android:textSize="18sp" />

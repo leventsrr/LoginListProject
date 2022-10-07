@@ -42,12 +42,26 @@ class FilterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //Performing operations when the filter button is pressed
+        //click events
+
+        backButtonHandler()
         choseFilterOnClickHandler()
 
-
-        mainActivityViewModel.getCategories()
+        initialize()
         setupAdapter()
+        (requireActivity() as MainActivity).hideBottomNavigation()
+
+    }
+
+    private fun backButtonHandler() {
+        binding.backButton.setOnClickListener{
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun initialize() {
+        mainActivityViewModel.getCategories()
+
         //Bringing categories from api
         mainActivityViewModel.categories.observe(viewLifecycleOwner) { response ->
 
@@ -56,8 +70,6 @@ class FilterFragment : Fragment() {
             }
             adapter.setList(categories)
         }
-        (requireActivity() as MainActivity).hideBottomNavigation()
-
     }
 
     private fun choseFilterOnClickHandler() {

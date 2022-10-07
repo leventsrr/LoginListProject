@@ -146,7 +146,7 @@
             app:srcCompat="@drawable/logo" />
 
         <ImageView
-            android:id="@+id/backProductListButton"
+            android:id="@+id/backToProductListButton"
             android:layout_width="11.25dp"
             android:layout_height="20dp"
             android:layout_marginStart="33dp"

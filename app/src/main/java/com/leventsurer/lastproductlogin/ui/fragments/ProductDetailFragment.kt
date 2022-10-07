@@ -12,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.MainActivity
-import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.databinding.FragmentProductDetailBinding
 import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
@@ -55,15 +54,20 @@ class ProductDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupRequest()
         subscribeObserve()
-        binding.backProductListButton.setOnClickListener{
-            //findNavController.navigate(R.id.action.....)
-            //findNavController().navigate(R.id.action_productDetailFragment_to_productListFragment3)
-
-            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToProductListFragment3(null)
-            findNavController().navigate(action)
-        }
+        backButtonClickHandler()
         (requireActivity() as MainActivity).hideBottomNavigation()
     }
+
+    private fun backButtonClickHandler() {
+        binding.backToProductListButton.setOnClickListener{
+            //findNavController.navigate(R.id.action.....)
+            //findNavController().navigate(R.id.action_productDetailFragment_to_productListFragment3)
+            findNavController().popBackStack()
+
+        }
+    }
+
+
     //Requesting product detail from API according to id
     private fun setupRequest() {
         mainActivityViewModel.getProductDetail(productId)
@@ -83,15 +87,21 @@ class ProductDetailFragment : Fragment() {
 
         adapterList?.let {
             context?.let { fragmentContext -> loadProductImage(fragmentContext,it) }
-            binding.productDetailTitle.text = it.title
-            //binding.productDetailCategory.text = it.category
-            binding.productDetailRate.text = it.rating?.rate.toString()
-            binding.productDetailPrice.text = "${it.price.toString()} TL"
-            binding.productDetailDescription.text = it.description
+            bindVariable(it)
         } ?: {
             Log.e("Hata Mesajı","Gelen Response Null")
         }
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun bindVariable(productDetail: ProductDetail) {
+        binding.productDetailTitle.text = productDetail.title
+        //binding.productDetailCategory.text = it.category
+
+        binding.productDetailRate.text = productDetail.rating?.rate.toString()
+        binding.productDetailPrice.text = "${productDetail.price.toString()} TL"
+        binding.productDetailDescription.text = productDetail.description
     }
 
     //Placing incoming data where necessary in XML

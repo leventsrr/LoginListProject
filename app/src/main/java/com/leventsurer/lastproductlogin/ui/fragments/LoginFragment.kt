@@ -47,11 +47,19 @@ class LoginFragment : Fragment() {
     //Actions performed when the login button is pressed
     private fun loginButtonClickHandler() {
         binding.loginButton.setOnClickListener{
+            initializePreManager()
+            navigateController()
 
-            prefManager = SharedPreferences(requireContext())
-            prefManager.createSharedPref(true)
-            findNavController().navigate(R.id.action_loginFragment_to_productListFragment3)
         }
+    }
+
+    private fun navigateController() {
+        findNavController().navigate(R.id.action_loginFragment_to_productListFragment3)
+    }
+
+    private fun initializePreManager() {
+        prefManager = SharedPreferences(requireContext())
+        prefManager.createSharedPref(true)
     }
 
 

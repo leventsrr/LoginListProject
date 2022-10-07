@@ -78,4 +78,7 @@ dependencies {
 
     //imageRound
     implementation 'com.google.android.material:material:1.2.0'
+
+    //circle photo
+    implementation 'de.hdodenhof:circleimageview:1.2.1'
 }

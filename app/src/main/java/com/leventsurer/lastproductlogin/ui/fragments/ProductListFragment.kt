@@ -187,7 +187,6 @@ class ProductsListFragment : Fragment() {
         } 
         else {
             sortIncreasing(originalArray)
-
         }
     }
 
@@ -199,7 +198,6 @@ class ProductsListFragment : Fragment() {
 
             sortedArray.add(product)
         }
-        Log.e("Sıralam", sortedArray.toString())
         return sortedArray
     }
 
