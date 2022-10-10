@@ -25,22 +25,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         init()
-
-
-        //setupBottomNavigationView()
-
-
     }
-
+    //making the necessary definitions at the opening of the fragment
     private fun init(){
         prefManager = SharedPreferences(this)
         setupBottomNavigationView()
 
 
     }
-
+    //Do not show login screen if there is login information defined in shared preferences
     private fun checkLogin(){
-        if(prefManager.isLogin() == false){
+        if(!prefManager.isLogin()){
             //ProductList e yönlendir
             //setupBottomNavigationView()
         }else{
@@ -48,10 +43,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.productListFragment3)
         }
     }
-
-
-
-
     //hide bottomNavigation
     fun hideBottomNavigation() {
         binding.bottomNavigationView.visibility = View.GONE
@@ -60,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     fun showBottomNavigation() {
         binding.bottomNavigationView.visibility = View.VISIBLE
     }
-
+    //bottom navigation bar min routing operations
     private fun setupBottomNavigationView() {
 
         val navHostFragment =

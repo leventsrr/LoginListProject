@@ -26,7 +26,7 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
         }
 
     }
-
+    //update adapter products list
     var list = ArrayList<ProductItem>()
         set(value) {
             field = value
@@ -42,15 +42,13 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         setupViewHolder(holder, position)
-
-        //Tıklanan ürünün id numarasının detay sayfasına gönderilmesi
         handleItemOnClick(holder, position)
     }
 
     private fun setupViewHolder(holder: ProductHolder, position: Int) {
         bindVariables(holder, position)
     }
-
+    //Defines the incoming data to the required places
     private fun bindVariables(holder: ProductHolder, position: Int) {
         holder.binding.apply {
             Glide.with(context).load(list[position].image).into(productImage)
@@ -59,17 +57,13 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
             productPrice.text = "${list[position].price.toString()} TL"
         }
     }
-
-    /** Bu bir metottur! (CTRL ALT Q(
-     *  @author Levent Sürer
-     **/
+    //Sending the id number of the clicked product to the detail page
     private fun handleItemOnClick(holder: ProductHolder, position: Int) {
         holder.itemView.setOnClickListener {
             onClickListenerCustom?.let {
                 if (list[position].id != null) {
                     it(list[position].id!!)
                 } else {
-                    // kotlinci pezo!
                     it(-1)
                 }
             }

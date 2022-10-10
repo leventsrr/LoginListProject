@@ -21,11 +21,8 @@ class MainActivityViewModel @Inject constructor(private val repository: ProductR
     private val _productDetail: MutableLiveData<ProductDetail> = MutableLiveData()
     val productDetail: LiveData<ProductDetail> get() = _productDetail
 
-
     private val _categories: MutableLiveData<ArrayList<String>> = MutableLiveData()
     val categories: LiveData<ArrayList<String>> get() = _categories
-
-
 
     //Get all products or products by category
     fun getProducts(categoryName: String?) = viewModelScope.launch {
@@ -38,31 +35,26 @@ class MainActivityViewModel @Inject constructor(private val repository: ProductR
     private suspend fun getProductSafeCall() {
         _product.value = repository.getProducts().body()
     }
-
     private suspend fun getProductByCategorySafeCall(categoryName: String) {
         if (repository.getCategories().isSuccessful){
             _product.value = repository.getProductsByCategory(categoryName).body()
         }
 
     }
-
     //Get only one product detail
     fun getProductDetail(productId: Int) = viewModelScope.launch {
         getProductDetailSafeCall(productId)
     }
-
     private suspend fun getProductDetailSafeCall(productId: Int) {
         if (repository.getCategories().isSuccessful){
             _productDetail.value = repository.getOneProduct(productId).body()
         }
 
     }
-
     //Get Categories
     fun getCategories() = viewModelScope.launch {
         getCategoriesSafeCall()
     }
-
     private suspend fun getCategoriesSafeCall() {
         if (repository.getCategories().isSuccessful){
             _categories.value = repository.getCategories().body()

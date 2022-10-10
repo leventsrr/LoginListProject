@@ -43,22 +43,37 @@ class FilterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //click events
-
-        backButtonHandler()
-        choseFilterOnClickHandler()
-
+        binding.apply {
+            clickHandler()
+        }
         initialize()
         setupAdapter()
         (requireActivity() as MainActivity).hideBottomNavigation()
 
     }
-
+    //checks for click events
+    private fun clickHandler() {
+        backButtonHandler()
+        choseFilterOnClickHandler()
+    }
+    //back button click event
     private fun backButtonHandler() {
         binding.backButton.setOnClickListener{
             findNavController().popBackStack()
         }
     }
+    //filter button click event
+    private fun choseFilterOnClickHandler() {
+        binding.chooseFilter.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                CATEGORY_NAME_BUNDLE_KEY,
+                chosenCategory
+            )
+            findNavController().popBackStack()
+        }
+    }
 
+    //When the fragment is opened, it makes the necessary definitions.
     private fun initialize() {
         mainActivityViewModel.getCategories()
 
@@ -72,15 +87,7 @@ class FilterFragment : Fragment() {
         }
     }
 
-    private fun choseFilterOnClickHandler() {
-        binding.chooseFilter.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set(
-                CATEGORY_NAME_BUNDLE_KEY,
-                chosenCategory
-            )
-            findNavController().popBackStack()
-        }
-    }
+
 
     //Connecting the view with the adapter
     private fun setupAdapter() {

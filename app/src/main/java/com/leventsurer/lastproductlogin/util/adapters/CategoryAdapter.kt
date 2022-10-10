@@ -24,6 +24,7 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>()
     val list get() = _list
 
     @SuppressLint("NotifyDataSetChanged")
+    //Updates the list of products in the adapter
     fun setList(newList: ArrayList<CategoryStatus>) {
         _list.clear()
         _list.addAll(newList)
@@ -43,13 +44,14 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>()
         holder.binding.apply {
 
             category.text = list[position].categoryName
+
             changeCategoryColor(position,category)
             categoryClickHandle(clCategory,position)
 
 
         }
     }
-
+    //manage click events
     private fun categoryClickHandle(clCategory:ConstraintLayout,position:Int) {
         clCategory.setOnClickListener {
             onClickListenerCustom?.let {
@@ -57,7 +59,7 @@ class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>()
             }
         }
     }
-
+    //change chosen category text color
     private fun changeCategoryColor(position:Int,category:TextView) {
         if (list[position].isChoosen) {
             category.setTextColor(Color.parseColor("#FDBF00"))

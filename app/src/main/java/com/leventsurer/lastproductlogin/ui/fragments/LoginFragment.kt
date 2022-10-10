@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.leventsurer.lastproductlogin.MainActivity
 import com.leventsurer.lastproductlogin.R
@@ -32,32 +31,24 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         loginButtonClickHandler()
-
-
         (requireActivity() as MainActivity).hideBottomNavigation()
-
-
-
     }
     //Actions performed when the login button is pressed
     private fun loginButtonClickHandler() {
         binding.loginButton.setOnClickListener{
-            initializePreManager()
+            initializePrefManager()
             navigateController()
-
         }
     }
-
+    //cross-page redirection
     private fun navigateController() {
         findNavController().navigate(R.id.action_loginFragment_to_productListFragment3)
     }
-
-    private fun initializePreManager() {
+    //Definitions about shared preferences
+    private fun initializePrefManager() {
         prefManager = SharedPreferences(requireContext())
         prefManager.createSharedPref(true)
     }

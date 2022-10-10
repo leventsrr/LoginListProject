@@ -60,7 +60,7 @@ class ProductsListFragment : Fragment() {
         subscribeObserve()
 
     }
-
+    //transmits  incoming data to adapter
     private fun subscribeObserve() {
         mainActivityViewModel.product.observe(viewLifecycleOwner) { response ->
             adapterList.clear()
@@ -69,11 +69,13 @@ class ProductsListFragment : Fragment() {
 
         }
     }
-
+    //handles click events
     private fun handleClickEvents() {
-        binding.filter.setOnClickListener {
-            findNavController().navigate(R.id.action_productListFragment3_to_filterFragment)
-        }
+        filterButtonClickHandler()
+        sortButtonClickHandler()
+    }
+    //Allows sorting of products
+    private fun sortButtonClickHandler() {
         binding.sortButton.setOnClickListener {
             val dialog = BottomSheetDialog(requireContext())
             val view = layoutInflater.inflate(R.layout.bottom_sheet_dialog, null)
@@ -83,7 +85,7 @@ class ProductsListFragment : Fragment() {
             val sortIncButton = view.findViewById<Button>(R.id.sortByIncPriceButton)
             val sortDecButton = view.findViewById<Button>(R.id.sortByDecsPriceButton)
 
-            //Ürünleri artan fiyata göre sırala
+            //Sort products by increasing price
             fun sortByIncreasing() {
 
                 val sortedList: ArrayList<ProductItem> = sortTheProductArray(adapterList, false)
@@ -96,7 +98,7 @@ class ProductsListFragment : Fragment() {
 
             }
 
-            //Ürünleri azalan fiyata göre sırala
+            //Sort products by decreasing price
             fun sortByDecreasing() {
 
                 val sortedList: ArrayList<ProductItem> = sortTheProductArray(adapterList, true)
@@ -109,6 +111,12 @@ class ProductsListFragment : Fragment() {
 
             }
 
+        }
+    }
+    //filter button event management
+    private fun filterButtonClickHandler(){
+        binding.filter.setOnClickListener {
+            findNavController().navigate(R.id.action_productListFragment3_to_filterFragment)
         }
     }
     //screen where products are listed and operations such as sorting are done
@@ -130,9 +138,7 @@ class ProductsListFragment : Fragment() {
             mainActivityViewModel.getProducts(null)
         }
     }
-    private fun setupBottomSheet(){
-
-    }
+    //product search
     private fun setupSearch() {
         searchView = binding.searchView
         searchView.clearFocus()
@@ -151,7 +157,6 @@ class ProductsListFragment : Fragment() {
             }
         })
     }
-
     //filtering products by search word
     private fun filterList(newText: String) {
         val filteredList = ArrayList<ProductItem>()
@@ -166,7 +171,6 @@ class ProductsListFragment : Fragment() {
             adapter.setFilteredList(filteredList)
         }
     }
-
     //Connecting adapter and ProductListFragment
     private fun setupAdapter() {
         binding.products.layoutManager = GridLayoutManager(context, 2)
@@ -189,7 +193,7 @@ class ProductsListFragment : Fragment() {
             sortIncreasing(originalArray)
         }
     }
-
+    //sort products by increasing price
     private fun sortIncreasing(originalArray: ArrayList<ProductItem>):ArrayList<ProductItem> {
         val sortingArray = originalArray.sortedWith(compareBy { it.price })
         val sortedArray = ArrayList<ProductItem>()
@@ -200,7 +204,7 @@ class ProductsListFragment : Fragment() {
         }
         return sortedArray
     }
-
+    //sort products by decreasing price
     private fun sortDescending(originalArray: ArrayList<ProductItem>): ArrayList<ProductItem> {
         val sortingArray = originalArray.sortedByDescending { it.price }
         val sortedArray=ArrayList<ProductItem>()
@@ -209,8 +213,6 @@ class ProductsListFragment : Fragment() {
         }
         return sortedArray
     }
-
-
     //Redirecting to the detail page of the clicked product
     private fun goToDetailFragment(productId: Int) {
         val action =

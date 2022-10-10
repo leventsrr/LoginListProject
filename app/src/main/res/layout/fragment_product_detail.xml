@@ -16,8 +16,13 @@
             android:id="@+id/scrollView3"
             android:layout_width="410dp"
             android:layout_height="fill_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
@@ -34,10 +39,10 @@
                     app:srcCompat="@drawable/back_button" />
 
                 <LinearLayout
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -67,7 +72,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="Oylama" />
+                            android:text="Rating" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -104,6 +109,7 @@
             android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#7CFFEB3B"
             android:gravity="clip_vertical|center_horizontal"
             android:orientation="horizontal"
             android:paddingTop="5dp"
@@ -127,7 +133,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/rounded_filter_button"
                 android:backgroundTint="#FDBF00"
-                android:text="Satın Al"
+                android:text="Buy Now"
                 app:backgroundTint="#FDBF00" />
 
         </LinearLayout>

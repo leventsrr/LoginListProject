@@ -28,18 +28,13 @@ class ProductDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            handleArguments()
+        handleArguments()
 
-        }
+
 
     }
-   // Bringing product details from another page
-    private fun handleArguments() {
-        arguments?.let {
-            productId = ProductDetailFragmentArgs.fromBundle(it).productId
-        }
-    }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,19 +55,13 @@ class ProductDetailFragment : Fragment() {
 
     private fun backButtonClickHandler() {
         binding.backToProductListButton.setOnClickListener{
-            //findNavController.navigate(R.id.action.....)
-            //findNavController().navigate(R.id.action_productDetailFragment_to_productListFragment3)
             findNavController().popBackStack()
-
         }
     }
-
-
     //Requesting product detail from API according to id
     private fun setupRequest() {
         mainActivityViewModel.getProductDetail(productId)
     }
-
     //Managing incoming data
     private fun subscribeObserve() {
         mainActivityViewModel.productDetail.observe(viewLifecycleOwner) { response ->
@@ -80,7 +69,6 @@ class ProductDetailFragment : Fragment() {
             handleResponse()
         }
     }
-
     @SuppressLint("SetTextI18n")
     //Placing incoming data where necessary in XML
     private fun handleResponse() {
@@ -95,6 +83,7 @@ class ProductDetailFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
+    //assigns the incoming data to the necessary variables
     private fun bindVariable(productDetail: ProductDetail) {
         binding.productDetailTitle.text = productDetail.title
         //binding.productDetailCategory.text = it.category
@@ -103,12 +92,15 @@ class ProductDetailFragment : Fragment() {
         binding.productDetailPrice.text = "${productDetail.price.toString()} TL"
         binding.productDetailDescription.text = productDetail.description
     }
-
     //Placing incoming data where necessary in XML
     private fun loadProductImage(fragmentContext: Context,productDetail:ProductDetail){
         Glide.with(fragmentContext).load(productDetail.image).into(binding.productDetailImage)
     }
-
-
+    //get the data sent from the other page
+    private fun handleArguments() {
+        arguments?.let {
+            productId = ProductDetailFragmentArgs.fromBundle(it).productId
+        }
+    }
 
 }

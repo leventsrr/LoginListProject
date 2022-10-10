@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Kategoriler"
+                    android:text="Categories"
                     android:textAlignment="center"
                     android:textColor="#52565C"
                     android:textSize="18sp" />

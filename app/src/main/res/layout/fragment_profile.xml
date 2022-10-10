@@ -16,59 +16,207 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="25dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:src="@drawable/profilephoto"
-                    android:id="@+id/imageView"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:shadowRadius="50"
-                    android:layout_weight="1"
-                    tools:src="@tools:sample/avatars" />
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/userNameInfo"
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:shadowRadius="50"
+                        android:src="@drawable/profilephoto"
+                        tools:src="@tools:sample/avatars" />
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:fontFamily="@font/titillium_web_bold"
-                        android:text="Levent Sürer"
-                        android:textSize="20sp" />
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/userMailInfı"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/titillium_web_bold"
-                        android:text="levent.surer@hizligeliyo.com"
-                        android:textSize="18sp" />
+                        <TextView
+                            android:id="@+id/userNameInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:text="Levent Sürer"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/userMailInfı"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:text="levent.surer@hizligeliyo.com"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-            </LinearLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="197dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginLeft="35dp"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:gravity="center"
+                            android:text="Available Campaigns"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="2dp" />
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="110dp"
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginEnd="57dp"
+                            android:layout_marginRight="57dp"
+                            android:src="@drawable/arrow"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView8"
+                            tools:layout_editor_absoluteY="0dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView4"
+                    android:layout_width="413dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView6">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/userCartCardButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="197dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginLeft="35dp"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:gravity="center"
+                            android:text="My Cart"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="2dp" />
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="110dp"
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginEnd="59dp"
+                            android:layout_marginRight="59dp"
+                            android:src="@drawable/arrow"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView9"
+                            tools:layout_editor_absoluteY="0dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+
+                    android:id="@+id/cardView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView4">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="73dp"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="197dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginLeft="35dp"
+                            android:fontFamily="@font/titillium_web_bold"
+                            android:gravity="center"
+                            android:text="Suggestion and Complaint"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="2dp" />
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="110dp"
+                            android:layout_marginLeft="110dp"
+                            android:layout_marginEnd="57dp"
+                            android:layout_marginRight="57dp"
+                            android:src="@drawable/arrow"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/textView10"
+                            tools:layout_editor_absoluteY="0dp" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/logoutButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="152dp"
+                    android:layout_marginLeft="152dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="152dp"
+                    android:layout_marginRight="152dp"
+                    android:text="Log out"
+                    app:backgroundTint="#CD3A3A"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView5" />
 
 
-            <Button
-                android:id="@+id/logoutButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Çıkış Yap"
-                app:backgroundTint="#CD3A3A" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
 
     </FrameLayout>

@@ -18,7 +18,6 @@ class ProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,26 +25,27 @@ class ProfileFragment : Fragment() {
         binding = FragmentProfileBinding.inflate(inflater,container,false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initializeSharedPreferences()
         handleClickEvent()
     }
-
+    //define shared preferences
     private fun initializeSharedPreferences() {
         prefManager = SharedPreferences(requireContext())
     }
-
+    //manage click events
     private fun handleClickEvent() {
         binding.apply {
             logoutButton.setOnClickListener {
                 logOut()
 
             }
+            binding.userCartCardButton.setOnClickListener {
+                findNavController().navigate(R.id.action_profileFragment_to_cartFragment)
+            }
         }
     }
-
     //Logout Account
     private fun logOut(){
         prefManager.removeData()
@@ -54,6 +54,7 @@ class ProfileFragment : Fragment() {
 
     }
 
+    //return to login screen
     private fun returnLoginScreen() {
         val action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment()
         findNavController().navigate(action)

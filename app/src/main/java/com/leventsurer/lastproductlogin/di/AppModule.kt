@@ -1,5 +1,6 @@
 package com.leventsurer.lastproductlogin.di
 
+import com.leventsurer.lastproductlogin.api.CartApi
 import com.leventsurer.lastproductlogin.api.ProductApi
 import com.leventsurer.lastproductlogin.util.constants.Cons
 import dagger.Module
@@ -10,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -47,5 +49,11 @@ object AppModule {
     @Provides
     fun getRetrofitServiceInstance(retrofit:Retrofit): ProductApi {
         return retrofit.create(ProductApi::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun getRetrofitServiceInstance2(retrofit: Retrofit):CartApi{
+        return retrofit.create(CartApi::class.java)
     }
 }
