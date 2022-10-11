@@ -27,6 +27,7 @@ class CartDetailFragment : Fragment() {
 
     private var adapterList = ArrayList<ProductDetail>()
     private var filteredAdapterList = ArrayList<ProductDetail>()
+    private var quantityAdapterList = ArrayList<Int>()
     private lateinit var adapter : CartDetailAdapter
 
     private val mainActivityViewModel:MainActivityViewModel by viewModels()
@@ -66,22 +67,33 @@ class CartDetailFragment : Fragment() {
         mainActivityViewModel.productDetail.observe(viewLifecycleOwner){
             adapterList.addAll(listOf(it))
             filterAdapterList()
-            Log.e("adapter", "subscribeObserve: $filteredAdapterList", )
+
         }
     }
 
     private fun filterAdapterList() {
+
         for(product in adapterList){
+
             if(product !in filteredAdapterList){
                 filteredAdapterList.add(product)
-            }
-        }
-        adapter.list = filteredAdapterList
-    }
 
+            }
+
+        }
+
+        adapter.list = filteredAdapterList
+        adapter.quantityList = quantityAdapterList
+    }
+    private fun findQuantity(){
+        for(productQuantity in chosenCart.products){
+            quantityAdapterList.add(productQuantity.quantity!!)
+        }
+
+    }
     private fun getProductsDetail() {
         for (product in chosenCart.products){
-            Log.e("ID", "getProductsDetail: ${product.productId}", )
+
             subscribeObserve()
             mainActivityViewModel.getProductDetail(product.productId!!)
 
@@ -114,6 +126,7 @@ class CartDetailFragment : Fragment() {
         arguments?.let {
             chosenCart = CartDetailFragmentArgs.fromBundle(it).cart
         }
+        findQuantity()
     }
 
 

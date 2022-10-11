@@ -10,29 +10,35 @@
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:id="@+id/cartDetailProduct"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/cartProductImage"
                     android:layout_width="300dp"
                     android:layout_height="100dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -41,14 +47,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center_horizontal"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="TextView" />
+                        android:text="TextView"
+                        android:textSize="18sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
 
@@ -57,16 +65,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:fontFamily="@font/titillium_web_bold"
                             android:gravity="center"
-                            android:text="TextView" />
+                            android:text="TextView"
+                            android:textSize="15sp" />
 
                         <TextView
                             android:id="@+id/cartProductQuantity"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:fontFamily="@font/titillium_web_bold"
                             android:gravity="center"
-                            android:text="TextView" />
+                            android:text="TextView"
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -76,7 +88,7 @@
                 android:id="@+id/divider4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="?android:attr/listDivider" />
+                android:background="#FDBF00" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
