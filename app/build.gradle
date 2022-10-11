@@ -7,11 +7,15 @@ plugins {
     //safe args
     id "androidx.navigation.safeargs"
 
+    id 'org.jetbrains.kotlin.android.extensions'
+
 }
 
 android {
     compileSdk 33
-
+    androidExtensions {
+        experimental = true
+    }
     defaultConfig {
         applicationId "com.leventsurer.lastproductlogin"
         minSdk 16

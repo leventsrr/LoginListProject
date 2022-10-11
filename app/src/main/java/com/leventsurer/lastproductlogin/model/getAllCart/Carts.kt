@@ -2,9 +2,11 @@ package com.leventsurer.lastproductlogin.model.getAllCart
 
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class Carts(
 
     @SerializedName("id"       ) var id: Int?                = null,
@@ -16,4 +18,4 @@ data class Carts(
     var totalPrice: Double? = 2.0
 
 
-)
+): Parcelable

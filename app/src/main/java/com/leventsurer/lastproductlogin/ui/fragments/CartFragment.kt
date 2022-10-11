@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leventsurer.lastproductlogin.databinding.FragmentCartBinding
 import com.leventsurer.lastproductlogin.model.getAllCart.Carts
-import com.leventsurer.lastproductlogin.model.getAllCart.PriceModel
+import com.leventsurer.lastproductlogin.model.getAllCart.Products
 import com.leventsurer.lastproductlogin.util.adapters.CartAdapter
 import com.leventsurer.lastproductlogin.viewModel.CartViewModel
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
@@ -98,7 +99,14 @@ class CartFragment : Fragment() {
         binding.cartsList.layoutManager = LinearLayoutManager(context)
         adapter = CartAdapter()
         binding.cartsList.adapter = adapter
+        adapter.setOnClickListenerCustom {cart ->
+            goToCartDetailFragment(cart)
+        }
+    }
 
+    private fun goToCartDetailFragment(cart: Carts) {
+        val action = CartFragmentDirections.actionCartFragmentToCartDetailFragment(cart)
+        findNavController().navigate(action)
     }
 
     private fun cartRequest() {

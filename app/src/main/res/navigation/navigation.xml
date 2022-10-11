@@ -81,5 +81,21 @@
         android:id="@+id/cartFragment"
         android:name="com.leventsurer.lastproductlogin.ui.fragments.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_cartDetailFragment"
+            app:destination="@id/cartDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartDetailFragment"
+        android:name="com.leventsurer.lastproductlogin.ui.fragments.CartDetailFragment"
+        android:label="fragment_cart_detail"
+        tools:layout="@layout/fragment_cart_detail" >
+        <action
+            android:id="@+id/action_cartDetailFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <argument
+            android:name="cart"
+            app:argType="com.leventsurer.lastproductlogin.model.getAllCart.Carts" />
+    </fragment>
 </navigation>
