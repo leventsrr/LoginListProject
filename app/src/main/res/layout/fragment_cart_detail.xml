@@ -20,7 +20,7 @@
                 android:id="@+id/linearLayout8"
                 android:layout_width="411dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -76,16 +76,12 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/cartDetailList"
-                android:layout_width="410dp"
-                android:layout_height="438dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
-                android:layout_marginBottom="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="555dp"
+                android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@+id/backToCartListButton"
