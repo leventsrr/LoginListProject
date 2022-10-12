@@ -73,7 +73,15 @@ class ProductsListFragment : Fragment() {
     private fun handleClickEvents() {
         filterButtonClickHandler()
         sortButtonClickHandler()
+        resetFilter()
     }
+
+    private fun resetFilter() {
+        binding.closeFilterButton.setOnClickListener{
+            mainActivityViewModel.getProducts(null)
+        }
+    }
+
     //Allows sorting of products
     private fun sortButtonClickHandler() {
         binding.sortButton.setOnClickListener {

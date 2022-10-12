@@ -188,6 +188,15 @@
                         android:text="Filter"
                         android:textColor="#7E7E7E"
                         android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/closeFilterButton"
+                        android:layout_width="25dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
                 </LinearLayout>
             </LinearLayout>
 

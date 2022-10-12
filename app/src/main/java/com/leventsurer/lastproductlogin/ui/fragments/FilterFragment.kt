@@ -90,7 +90,7 @@ class FilterFragment : Fragment() {
 
 
     //Connecting the view with the adapter
-    private fun setupAdapter() {
+    private  fun setupAdapter() {
 
         binding.categoriesList.layoutManager = LinearLayoutManager(context)
         adapter = CategoryAdapter()

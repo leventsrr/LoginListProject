@@ -43,7 +43,7 @@ class CartAdapter():RecyclerView.Adapter<CartAdapter.CartHolder>() {
         holder.binding.apply {
             val currentItem = list[position]
 
-            cartPrice.text = "Price : ${currentItem.totalPrice}"
+            //cartPrice.text = "Price : ${currentItem.totalPrice}"
             cartDate.text = "Date : ${modifyDateLayout(currentItem.date!!)[0]}"
             cartTime.text = "Time : ${modifyDateLayout(currentItem.date!!)[1]}"
         }

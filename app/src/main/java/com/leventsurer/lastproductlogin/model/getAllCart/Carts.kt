@@ -16,7 +16,7 @@ data class Carts(
     @SerializedName("products" ) var products:@RawValue ArrayList<Products>  = arrayListOf(),
     @SerializedName("__v"      ) var _v: Int?                = null,
     var priceList :@RawValue ArrayList<PriceModel> = arrayListOf(),
-    var totalPrice: Double? = 2.0
+    var totalPrice: Double? = 0.0
 
 
 ): Parcelable

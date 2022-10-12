@@ -8,4 +8,9 @@ class CartRepository @Inject constructor(
 ) {
 
     suspend fun getCart() = api.getCart()
+
+    suspend fun getCartsLimited(limit:Int) = api.getCartByLimited(limit)
+
+
+    suspend fun getSingleCart(id:Int) = api.getSingleCart(id)
 }

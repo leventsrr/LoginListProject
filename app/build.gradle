@@ -14,7 +14,9 @@ plugins {
 
 android {
     compileSdk 33
-
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
     defaultConfig {
         applicationId "com.leventsurer.lastproductlogin"
         minSdk 16
@@ -82,6 +84,9 @@ dependencies {
     //imageRound
     implementation 'com.google.android.material:material:1.2.0'
 
-    //circle photo
-    implementation 'de.hdodenhof:circleimageview:1.2.1'
+    //Coroutines
+
+   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+
 }

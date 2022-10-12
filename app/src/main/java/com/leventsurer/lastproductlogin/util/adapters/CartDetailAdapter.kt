@@ -12,9 +12,7 @@ import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
 class CartDetailAdapter():RecyclerView.Adapter<CartDetailAdapter.CartDetailHolder>() {
     private lateinit var context : Context
     class CartDetailHolder(val binding:CartDetailCardBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(){
 
-        }
 
     }
 
@@ -24,10 +22,10 @@ class CartDetailAdapter():RecyclerView.Adapter<CartDetailAdapter.CartDetailHolde
         notifyDataSetChanged()
     }
     var quantityList = ArrayList<Int>()
-    set(value) {
-        field = value
-        notifyDataSetChanged()
-    }
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartDetailHolder {
         context = parent.context
         val binding = CartDetailCardBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -37,13 +35,12 @@ class CartDetailAdapter():RecyclerView.Adapter<CartDetailAdapter.CartDetailHolde
     override fun onBindViewHolder(holder: CartDetailHolder, position: Int) {
         holder.binding.apply {
 
-            val currentItem = list[position]
 
             Glide.with(context).load(list[position].image).into(cartProductImage)
-                cartProductName.text = currentItem.title
-                cartProductPrice.text = "Price : ${currentItem.price.toString()}"
-                cartProductQuantity.text = "Quantity : ${quantityList[position]}"
-
+                cartProductName.text = list[position].title
+                cartProductPrice.text = "${list[position].price} TL"
+                //cartProductQuantity.text = quantityList[position].toString()
+                //totalProductPrice.text = totalPriceList[position].toString()
         }
     }
 
