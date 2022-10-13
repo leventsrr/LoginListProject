@@ -87,7 +87,33 @@
                         android:text="TextView"
                         android:textSize="16sp" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web_bold"
+                        android:gravity="center"
+                        android:text="Total Price"
+                        android:textColor="#FDBF00"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/cartDetailTotalPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/titillium_web"
+                        android:gravity="center"
+                        android:text="TextView"
+                        android:textSize="16sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView

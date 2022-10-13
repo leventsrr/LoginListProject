@@ -77,8 +77,14 @@ class ProductsListFragment : Fragment() {
     }
 
     private fun resetFilter() {
+
         binding.closeFilterButton.setOnClickListener{
             mainActivityViewModel.getProducts(null)
+            findNavController().currentBackStackEntry?.savedStateHandle?.set(
+                CATEGORY_NAME_BUNDLE_KEY,
+                null
+            )
+
         }
     }
 
@@ -137,12 +143,15 @@ class ProductsListFragment : Fragment() {
                 setupProductListRequest()
             }
         setupProductListRequest()
+
     }
     //getting products from api
     private fun setupProductListRequest() {
         categoryName?.let {
+            Log.e("categoryName","$categoryName")
             mainActivityViewModel.getProducts(it)
         } ?: run {
+            Log.e("categoryName","$categoryName")
             mainActivityViewModel.getProducts(null)
         }
     }

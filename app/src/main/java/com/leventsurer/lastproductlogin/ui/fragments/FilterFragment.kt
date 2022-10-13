@@ -59,6 +59,12 @@ class FilterFragment : Fragment() {
     //back button click event
     private fun backButtonHandler() {
         binding.backButton.setOnClickListener{
+           // findNavController().popBackStack()
+
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                CATEGORY_NAME_BUNDLE_KEY,
+                chosenCategory
+            )
             findNavController().popBackStack()
         }
     }
@@ -70,6 +76,8 @@ class FilterFragment : Fragment() {
                 chosenCategory
             )
             findNavController().popBackStack()
+
+
         }
     }
 
@@ -111,6 +119,7 @@ class FilterFragment : Fragment() {
                 chosenCategory = categories[i].categoryName
             }
         }
+
         adapter.setList(categories)
     }
 

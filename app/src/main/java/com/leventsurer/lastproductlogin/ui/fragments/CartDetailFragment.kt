@@ -24,12 +24,11 @@ class CartDetailFragment : Fragment() {
     private val binding: FragmentCartDetailBinding get() = _binding!!
 
     private var adapterList = ArrayList<ProductDetail>()
-
     private lateinit var adapter: CartDetailAdapter
-    private val quantityList = ArrayList<Int>()
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
-
+    private var totalPrice = 0.0
     private lateinit var chosenCart: Carts
+    private var quantityList=ArrayList<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         handleArguments()
@@ -55,59 +54,73 @@ class CartDetailFragment : Fragment() {
     override  fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleOnClickEvents()
-        valueBind()
+
         setupAdapter()
+        getProductsQuantity()
         getProductsDetail()
 
         subscribeObserve()
-
+        valueBind()
     }
+
+    var i = 0
     //private var modelList=ArrayList<CartDetailProductInfo>()
     private fun subscribeObserve() {
 
         mainActivityViewModel.productDetail.observe(viewLifecycleOwner) {
-            Log.e("product","${it.id}")
+
             adapterList.add(it)
-            adapter.list = adapterList
+            Log.e("listtt","${it.id}")
+
+            val sortedList = sortIncreasingById(adapterList)
+            adapter.list = sortedList
         }
 
+
     }
+    private fun sortIncreasingById(originalArray: ArrayList<ProductDetail>):ArrayList<ProductDetail> {
+        val sortingArray = originalArray.sortedWith(compareBy { it.id })
+        val sortedArray = ArrayList<ProductDetail>()
 
+        for (product: ProductDetail in sortingArray) {
+
+            sortedArray.add(product)
+        }
+        return sortedArray
+    }
     private fun getProductsDetail()  {
-
-
         for (product in chosenCart.products) {
             Log.e("product","productId:${product.productId}")
 
-              mainActivityViewModel.getProductDetail(product.productId!!)
-
+                 mainActivityViewModel.getProductDetail(product.productId!!)
         }
     }
-
 
     private fun handleArguments() {
         arguments?.let {
             chosenCart = CartDetailFragmentArgs.fromBundle(it).cart
         }
 
-
     }
-
-
 
     private fun valueBind() {
         binding.cartDetailDate.text = modifyDateLayout(chosenCart.date!!)[0]
         binding.cartDetailTime.text = modifyDateLayout(chosenCart.date!!)[1]
-
+        binding.cartDetailTotalPrice.text = totalPrice.toString()
     }
 
     private fun setupAdapter() {
-
         binding.cartDetailList.layoutManager = LinearLayoutManager(context)
         adapter = CartDetailAdapter()
         binding.cartDetailList.adapter = adapter
     }
 
+    private fun getProductsQuantity(){
+        for(quantity in chosenCart.products){
+            quantity.quantity?.let { quantityList.add(it) }
+        }
+        adapter.quantityList = quantityList
+    }
     private fun handleOnClickEvents() {
         binding.apply {
             backToCartListButton.setOnClickListener {

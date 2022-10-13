@@ -39,7 +39,7 @@ class CartDetailAdapter():RecyclerView.Adapter<CartDetailAdapter.CartDetailHolde
             Glide.with(context).load(list[position].image).into(cartProductImage)
                 cartProductName.text = list[position].title
                 cartProductPrice.text = "${list[position].price} TL"
-                //cartProductQuantity.text = quantityList[position].toString()
+                cartProductQuantity.text = quantityList[position].toString()
                 //totalProductPrice.text = totalPriceList[position].toString()
         }
     }
