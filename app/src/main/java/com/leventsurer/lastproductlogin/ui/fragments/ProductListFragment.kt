@@ -15,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.leventsurer.lastproductlogin.MainActivity
 import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.databinding.FragmentProductListBinding
-import com.leventsurer.lastproductlogin.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
 import com.leventsurer.lastproductlogin.util.adapters.ProductAdapter
 import com.leventsurer.lastproductlogin.util.constants.Cons.CATEGORY_NAME_BUNDLE_KEY
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel

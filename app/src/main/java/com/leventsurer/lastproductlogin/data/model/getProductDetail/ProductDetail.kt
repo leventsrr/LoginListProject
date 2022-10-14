@@ -1,4 +1,4 @@
-package com.leventsurer.lastproductlogin.model.getProductDetail
+package com.leventsurer.lastproductlogin.data.model.getProductDetail
 
 import com.google.gson.annotations.SerializedName
 

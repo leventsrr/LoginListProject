@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.leventsurer.lastproductlogin.databinding.FilterCategoryBinding
-import com.leventsurer.lastproductlogin.model.CategoryStatus
+import com.leventsurer.lastproductlogin.data.model.CategoryStatus
 
 class CategoryAdapter() : RecyclerView.Adapter<CategoryAdapter.CategoryHolder>() {
 

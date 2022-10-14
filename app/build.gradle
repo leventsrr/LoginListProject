@@ -81,12 +81,11 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-    //imageRound
-    implementation 'com.google.android.material:material:1.2.0'
+    //Room
+    def room_version = "2.4.3"
 
-    //Coroutines
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
-   implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
 
 }

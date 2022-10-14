@@ -96,6 +96,6 @@
             app:destination="@id/cartFragment" />
         <argument
             android:name="cart"
-            app:argType="com.leventsurer.lastproductlogin.model.getAllCart.Carts" />
+            app:argType="com.leventsurer.lastproductlogin.data.model.getAllCart.Carts" />
     </fragment>
 </navigation>

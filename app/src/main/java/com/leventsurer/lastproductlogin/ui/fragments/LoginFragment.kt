@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.leventsurer.lastproductlogin.MainActivity
 import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.databinding.FragmentLoginBinding
-import com.leventsurer.lastproductlogin.di.SharedPreferences
+import com.leventsurer.lastproductlogin.data.database.SharedPreferences
 import dagger.hilt.android.AndroidEntryPoint
 //login screen
 @AndroidEntryPoint

@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.leventsurer.lastproductlogin.model.getAllProducts.ProductItem
-import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.repository.ProductRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

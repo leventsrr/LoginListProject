@@ -8,12 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.databinding.FragmentProfileBinding
-import com.leventsurer.lastproductlogin.di.SharedPreferences
+import com.leventsurer.lastproductlogin.data.database.SharedPreferences
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding:FragmentProfileBinding
-    private lateinit var prefManager:SharedPreferences
+    private lateinit var prefManager: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

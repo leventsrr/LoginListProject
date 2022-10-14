@@ -1,4 +1,4 @@
-package com.leventsurer.lastproductlogin.di
+package com.leventsurer.lastproductlogin.data.database
 
 import android.content.Context
 import android.content.SharedPreferences

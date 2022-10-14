@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.leventsurer.lastproductlogin.databinding.CartCardBinding
-import com.leventsurer.lastproductlogin.model.getAllCart.Carts
-import com.leventsurer.lastproductlogin.model.getAllCart.Products
+import com.leventsurer.lastproductlogin.data.model.getAllCart.Carts
+import com.leventsurer.lastproductlogin.data.model.getAllCart.Products
 import java.text.ParseException
 import java.text.SimpleDateFormat
 
@@ -15,7 +15,7 @@ class CartAdapter():RecyclerView.Adapter<CartAdapter.CartHolder>() {
     private lateinit var context : Context
     private var date=ArrayList<String>()
     class CartHolder(val binding:CartCardBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(cart:Carts){
+        fun bind(cart: Carts){
         }
     }
 

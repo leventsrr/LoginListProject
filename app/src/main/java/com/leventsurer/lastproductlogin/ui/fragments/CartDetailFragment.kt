@@ -12,8 +12,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leventsurer.lastproductlogin.databinding.FragmentCartDetailBinding
-import com.leventsurer.lastproductlogin.model.getAllCart.Carts
-import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.data.model.getAllCart.Carts
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.util.adapters.CartDetailAdapter
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint

@@ -9,7 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.leventsurer.lastproductlogin.databinding.ActivityMainBinding
-import com.leventsurer.lastproductlogin.di.SharedPreferences
+import com.leventsurer.lastproductlogin.data.database.SharedPreferences
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,7 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private lateinit var prefManager:SharedPreferences
+    private lateinit var prefManager: SharedPreferences
     private lateinit var context: Context
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {

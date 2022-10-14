@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leventsurer.lastproductlogin.MainActivity
 import com.leventsurer.lastproductlogin.databinding.FragmentFilterBinding
-import com.leventsurer.lastproductlogin.model.CategoryStatus
+import com.leventsurer.lastproductlogin.data.model.CategoryStatus
 import com.leventsurer.lastproductlogin.util.adapters.CategoryAdapter
 import com.leventsurer.lastproductlogin.util.constants.Cons.CATEGORY_NAME_BUNDLE_KEY
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel

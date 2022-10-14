@@ -1,7 +1,7 @@
 package com.leventsurer.lastproductlogin.api
 
-import com.leventsurer.lastproductlogin.model.getAllProducts.ProductItem
-import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

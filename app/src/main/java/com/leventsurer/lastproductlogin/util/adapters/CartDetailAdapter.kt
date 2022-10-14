@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.databinding.CartDetailCardBinding
-import com.leventsurer.lastproductlogin.model.getAllProducts.ProductItem
-import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 
 class CartDetailAdapter():RecyclerView.Adapter<CartDetailAdapter.CartDetailHolder>() {
     private lateinit var context : Context

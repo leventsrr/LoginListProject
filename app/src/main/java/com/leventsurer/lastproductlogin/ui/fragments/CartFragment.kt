@@ -14,9 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.databinding.FragmentCartBinding
-import com.leventsurer.lastproductlogin.model.getAllCart.Carts
-import com.leventsurer.lastproductlogin.model.getAllCart.Products
-import com.leventsurer.lastproductlogin.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getAllCart.Carts
+import com.leventsurer.lastproductlogin.data.model.getAllCart.Products
+import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
 import com.leventsurer.lastproductlogin.util.adapters.CartAdapter
 import com.leventsurer.lastproductlogin.viewModel.CartViewModel
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel

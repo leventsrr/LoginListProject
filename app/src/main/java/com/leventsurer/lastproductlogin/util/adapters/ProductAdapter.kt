@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.databinding.ProductCardBinding
-import com.leventsurer.lastproductlogin.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
 
 class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     private lateinit var context: Context

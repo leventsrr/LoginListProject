@@ -1,4 +1,4 @@
-package com.leventsurer.lastproductlogin.model.getAllProducts
+package com.leventsurer.lastproductlogin.data.model.getAllProducts
 
 import com.google.gson.annotations.SerializedName
 //class used for the response of the request from which all products are called

@@ -1,4 +1,4 @@
-package com.leventsurer.lastproductlogin.model.getAllCart
+package com.leventsurer.lastproductlogin.data.model.getAllCart
 
 
 
@@ -15,8 +15,7 @@ data class Carts(
     @SerializedName("date"     ) var date: String?             = null,
     @SerializedName("products" ) var products:@RawValue ArrayList<Products>  = arrayListOf(),
     @SerializedName("__v"      ) var _v: Int?                = null,
-    var priceList :@RawValue ArrayList<PriceModel> = arrayListOf(),
-    var totalPrice: Double? = 0.0
 
 
-): Parcelable
+
+    ): Parcelable

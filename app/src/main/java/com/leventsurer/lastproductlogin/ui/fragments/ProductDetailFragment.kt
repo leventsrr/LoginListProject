@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.MainActivity
 import com.leventsurer.lastproductlogin.databinding.FragmentProductDetailBinding
-import com.leventsurer.lastproductlogin.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 //Page showing product detail
@@ -93,7 +93,7 @@ class ProductDetailFragment : Fragment() {
         binding.productDetailDescription.text = productDetail.description
     }
     //Placing incoming data where necessary in XML
-    private fun loadProductImage(fragmentContext: Context,productDetail:ProductDetail){
+    private fun loadProductImage(fragmentContext: Context,productDetail: ProductDetail){
         Glide.with(fragmentContext).load(productDetail.image).into(binding.productDetailImage)
     }
     //get the data sent from the other page
