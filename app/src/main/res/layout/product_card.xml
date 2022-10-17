@@ -6,15 +6,14 @@
 
     <androidx.cardview.widget.CardView
 
-        app:cardCornerRadius="32dp"
+        app:cardCornerRadius="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:cardElevation="0dp"
+        app:cardElevation="5dp"
         >
 
         <LinearLayout
-            android:background="@drawable/product_card_border"
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -71,7 +70,7 @@
                 <ImageView
                     android:id="@+id/productFavoriteStatus"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="22dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"

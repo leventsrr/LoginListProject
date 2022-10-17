@@ -1,10 +1,12 @@
 package com.leventsurer.lastproductlogin.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
@@ -51,8 +53,12 @@ class FavoriteProductsFragment : Fragment() {
 
         setupAdapter()
         subscribeObserve()
+        setupSearch()
     }
 
+    private fun showToastMessage(productName:String){
+        Toast.makeText(context,"$productName Deleted From Favorites", Toast.LENGTH_SHORT).show()
+    }
 
     private fun setupAdapter() {
         binding.favoriteProductsList.layoutManager = LinearLayoutManager(context)
@@ -65,6 +71,7 @@ class FavoriteProductsFragment : Fragment() {
     }
     private fun removeFromFavorities(favoriteProduct: FavoriteProduct){
         favoriteProductViewModel.removeProductFromFavorites(favoriteProduct)
+        showToastMessage(favoriteProduct.title)
     }
     private fun subscribeObserve() {
         favoriteProductViewModel.favoriteProducts.observe(viewLifecycleOwner) { response ->
@@ -73,5 +80,36 @@ class FavoriteProductsFragment : Fragment() {
             adapter.list = adapterList
 
         }
+    }
+    private fun filterList(newText: String) {
+        val filteredList = ArrayList<FavoriteProduct>()
+        for (productItem: FavoriteProduct in adapterList) {
+            if (productItem.title!!.lowercase().contains(newText.lowercase())) {
+                filteredList.add(productItem)
+            }
+        }
+        if (filteredList.isEmpty()) {
+            Log.e("arama", "data yok")
+        } else {
+            adapter.setFilteredList(filteredList)
+        }
+    }
+    private fun setupSearch() {
+        searchView = binding.searchView
+        searchView.clearFocus()
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            View.OnFocusChangeListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                filterList(newText)
+                return true
+            }
+
+            override fun onFocusChange(p0: View?, p1: Boolean) {
+            }
+        })
     }
 }

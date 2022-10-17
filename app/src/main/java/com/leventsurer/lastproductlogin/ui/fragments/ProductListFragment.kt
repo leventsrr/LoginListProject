@@ -2,10 +2,12 @@ package com.leventsurer.lastproductlogin.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -205,7 +207,12 @@ class ProductsListFragment : Fragment() {
         //add product to favorities
         adapter.addToFavoritePage { product->
             addProductToFavorities(product)
+            showToastMessage(product.title)
+
         }
+    }
+    private fun showToastMessage(productName:String){
+        Toast.makeText(context,"$productName Added To Favorites",Toast.LENGTH_SHORT).show()
     }
     //add product to favorities
     private fun addProductToFavorities(product:FavoriteProduct) {

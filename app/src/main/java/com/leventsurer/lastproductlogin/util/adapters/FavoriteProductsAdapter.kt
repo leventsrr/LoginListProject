@@ -15,7 +15,10 @@ import com.leventsurer.lastproductlogin.databinding.FavoriteProductListCardBindi
 
 class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.FavoriteProductCartHolder>() {
     private lateinit var context: Context
-
+    fun setFilteredList(filteredList: ArrayList<FavoriteProduct>) {
+        this.list = filteredList
+        //notifyDataSetChanged()
+    }
 
     class FavoriteProductCartHolder(val binding: FavoriteProductListCardBinding) : RecyclerView.ViewHolder(binding.root) {
 

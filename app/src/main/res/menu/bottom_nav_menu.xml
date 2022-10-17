@@ -11,7 +11,7 @@
         android:title="@string/menu" />
     <item
         android:id="@+id/favoriteProductsFragment"
-        android:icon="@drawable/ic_ticket"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
         android:title="@string/ticket" />
     <item
         android:id="@+id/profileFragment"

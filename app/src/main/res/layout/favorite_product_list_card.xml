@@ -16,7 +16,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         app:cardCornerRadius="5dp"
-        app:cardElevation="50dp">
+        app:cardElevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -90,7 +90,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_favorite_border_24">
+                            android:src="@drawable/ic_filled_favorite">
 
                         </ImageView>
                     </LinearLayout>

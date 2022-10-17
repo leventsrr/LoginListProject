@@ -16,14 +16,100 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/favoriteProductsList"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="598dp"
-                android:layout_marginBottom="70dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="370dp"
+                    android:layout_height="55dp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="52dp"
+                    android:layout_marginEnd="22dp"
+                    android:background="@drawable/rounded_corner_menu"
+                    android:elevation="5dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="370dp"
+                        android:layout_height="51dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/searchView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:iconifiedByDefault="false"
+                            app:queryBackground="@android:color/transparent"
+                            app:queryHint="Search By Category Or Product" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/view7"
+                            android:layout_width="61.5dp"
+                            android:layout_height="3.3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/green_radious"
+                            android:backgroundTint="#27AE60" />
+
+                        <View
+                            android:id="@+id/view8"
+                            android:layout_width="61.5dp"
+                            android:layout_height="3.3dp"
+                            android:layout_weight="1"
+                            android:background="#2F80ED" />
+
+                        <View
+                            android:id="@+id/view9"
+                            android:layout_width="61.5dp"
+                            android:layout_height="3.3dp"
+                            android:layout_weight="1"
+                            android:background="#F2994A" />
+
+                        <View
+                            android:id="@+id/view10"
+                            android:layout_width="61.5dp"
+                            android:layout_height="3.3dp"
+                            android:layout_weight="1"
+                            android:background="#EB5757" />
+
+                        <View
+                            android:id="@+id/view11"
+                            android:layout_width="61.5dp"
+                            android:layout_height="3.3dp"
+                            android:layout_weight="1"
+                            android:background="#BB6BD9" />
+
+                        <View
+
+                            android:id="@+id/view12"
+                            android:layout_width="61.5dp"
+                            android:layout_height="3.3dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_radious" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/favoriteProductsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="70dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+            </LinearLayout>
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>
