@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FavoriteProductDao {
-    @Query("Select * FROM product_table")
+    @Query("Select * FROM favorite_product_table")
     fun getFavoriteProducts():Flow<List<FavoriteProduct>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
