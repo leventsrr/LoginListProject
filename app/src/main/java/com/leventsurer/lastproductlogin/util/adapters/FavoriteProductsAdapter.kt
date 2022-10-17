@@ -53,7 +53,7 @@ class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.F
             Log.e("DENEME", "3")
             favoriteProductName.text = list[position].title
             favoriteProductPrice.text = "${list[position].price.toString()} TL"
-            favoriteProdcutRate.text = list[position].rating.toString()
+
         }
     }
     //Sending the id number of the clicked product to the detail page

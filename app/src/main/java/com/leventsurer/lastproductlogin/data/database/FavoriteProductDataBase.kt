@@ -25,7 +25,8 @@ abstract class FavoriteProductDataBase :RoomDatabase(){
             val dao = database.get().favoriteProductDao()
 
             applicationScope.launch {
-                dao.insert(FavoriteProduct(1,"Deneme",12.12,"İlk deneme","Deneme","www.deneme",12.12))
+                dao.insert(FavoriteProduct(1,"Deneme",12.15,"İlk deneme","Deneme","https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",12.12))
+
             }
         }
     }
