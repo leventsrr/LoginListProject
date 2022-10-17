@@ -14,10 +14,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.leventsurer.lastproductlogin.MainActivity
 import com.leventsurer.lastproductlogin.R
+import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
 import com.leventsurer.lastproductlogin.databinding.FragmentProductListBinding
 import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.util.adapters.ProductAdapter
 import com.leventsurer.lastproductlogin.util.constants.Cons.CATEGORY_NAME_BUNDLE_KEY
+import com.leventsurer.lastproductlogin.viewModel.FavoriteProductViewModel
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 //screen where products are listed and operations such as sorting are done
@@ -28,6 +31,7 @@ class ProductsListFragment : Fragment() {
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
     private var adapterList = ArrayList<ProductItem>()
     private var categoryName: String? = null
+    private val favoriteProductViewModel: FavoriteProductViewModel by viewModels()
 
     private lateinit var searchView: SearchView
 
@@ -75,6 +79,8 @@ class ProductsListFragment : Fragment() {
         sortButtonClickHandler()
         resetFilter()
     }
+
+
 
     private fun resetFilter() {
 
@@ -193,9 +199,18 @@ class ProductsListFragment : Fragment() {
         binding.products.layoutManager = GridLayoutManager(context, 2)
         adapter = ProductAdapter()
         binding.products.adapter = adapter
-        adapter.setOnClickListenerCustom {
+        adapter.goToDetailPage {
             goToDetailFragment(it)
         }
+        //add product to favorities
+        adapter.addToFavoritePage { product->
+            addProductToFavorities(product)
+        }
+    }
+    //add product to favorities
+    private fun addProductToFavorities(product:FavoriteProduct) {
+        favoriteProductViewModel.addProductToFavorities(FavoriteProduct(product.id,product.title,product.price,product.description,product.category,
+            product.image,product.rating))
     }
     //sort products by price
     private fun sortTheProductArray(

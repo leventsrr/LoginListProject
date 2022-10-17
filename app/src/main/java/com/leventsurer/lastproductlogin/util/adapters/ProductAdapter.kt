@@ -8,8 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.R
+import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
 import com.leventsurer.lastproductlogin.databinding.ProductCardBinding
 import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 
 class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     private lateinit var context: Context
@@ -55,25 +57,41 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
             Log.e("DENEME", "3")
             productTitle.text = list[position].title
             productPrice.text = "${list[position].price.toString()} TL"
+
         }
     }
     //Sending the id number of the clicked product to the detail page
     private fun handleItemOnClick(holder: ProductHolder, position: Int) {
         holder.itemView.setOnClickListener {
-            onClickListenerCustom?.let {
+            goToDetailPage?.let {
                 if (list[position].id != null) {
                     it(list[position].id!!)
                 } else {
                     it(-1)
                 }
             }
+
+        }
+        holder.binding.productFavoriteStatus.setOnClickListener {
+            addToFavoritePage?.let {
+                var item = list[position]
+                it(FavoriteProduct(item.id?:-1,item.title?:"deneme",item.price?:-1.0,item.description?:"deneme",item.category?:"deneme",item.image?:"deneme",item.rating!!.rate?:1.0))
+            }
         }
     }
 
-    private var onClickListenerCustom: ((productId: Int) -> Unit)? = null
-    fun setOnClickListenerCustom(f: ((productId: Int) -> Unit)) {
+
+    //move to product's detail page
+    private var goToDetailPage: ((productId: Int) -> Unit)? = null
+    fun goToDetailPage(f: ((productId: Int) -> Unit)) {
         Log.e("TAG", "setOnClickListenerCustom: ")
-        onClickListenerCustom = f
+        goToDetailPage = f
+    }
+
+    private var addToFavoritePage: ((product: FavoriteProduct) -> Unit)? = null
+    fun addToFavoritePage(f: ((product: FavoriteProduct) -> Unit)) {
+        Log.e("TAG", "setOnClickListenerCustom: ")
+        addToFavoritePage = f
     }
 
     override fun getItemCount(): Int {

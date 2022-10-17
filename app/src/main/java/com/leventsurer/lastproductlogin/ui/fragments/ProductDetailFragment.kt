@@ -12,8 +12,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.MainActivity
+import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
 import com.leventsurer.lastproductlogin.databinding.FragmentProductDetailBinding
 import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.viewModel.FavoriteProductViewModel
 import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 //Page showing product detail
@@ -23,6 +25,7 @@ class ProductDetailFragment : Fragment() {
     private val binding: FragmentProductDetailBinding get() = _binding!!
     private var adapterList: ProductDetail? = null
     private val mainActivityViewModel: MainActivityViewModel by viewModels()
+    private val favoriteProductViewModel: FavoriteProductViewModel by viewModels()
     var productId = 0
 
 
@@ -81,7 +84,6 @@ class ProductDetailFragment : Fragment() {
         }
 
     }
-
     @SuppressLint("SetTextI18n")
     //assigns the incoming data to the necessary variables
     private fun bindVariable(productDetail: ProductDetail) {

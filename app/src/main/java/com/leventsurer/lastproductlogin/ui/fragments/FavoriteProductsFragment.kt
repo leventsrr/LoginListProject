@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
 import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.databinding.FragmentFavoriteProductsBinding
 import com.leventsurer.lastproductlogin.databinding.FragmentProductListBinding
 import com.leventsurer.lastproductlogin.util.adapters.FavoriteProductsAdapter
@@ -56,9 +58,14 @@ class FavoriteProductsFragment : Fragment() {
         binding.favoriteProductsList.layoutManager = LinearLayoutManager(context)
         adapter = FavoriteProductsAdapter()
         binding.favoriteProductsList.adapter = adapter
+        adapter.setOnClickListenerCustom { item ->
+            removeFromFavorities(item)
+        }
 
     }
-
+    private fun removeFromFavorities(favoriteProduct: FavoriteProduct){
+        favoriteProductViewModel.removeProductFromFavorites(favoriteProduct)
+    }
     private fun subscribeObserve() {
         favoriteProductViewModel.favoriteProducts.observe(viewLifecycleOwner) { response ->
             adapterList.clear()

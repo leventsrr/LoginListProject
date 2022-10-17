@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.R
 import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
 import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.databinding.FavoriteProductListCardBinding
 
 class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.FavoriteProductCartHolder>() {
@@ -58,19 +59,16 @@ class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.F
     }
     //Sending the id number of the clicked product to the detail page
     private fun handleItemOnClick(holder: FavoriteProductCartHolder, position: Int) {
-        holder.itemView.setOnClickListener {
+
+        holder.binding.favoriteProductStatus.setOnClickListener {
             onClickListenerCustom?.let {
-                if (list[position].id != null) {
-                    it(list[position].id!!)
-                } else {
-                    it(-1)
-                }
+                it(list[position])
             }
         }
     }
 
-    private var onClickListenerCustom: ((productId: Int) -> Unit)? = null
-    fun setOnClickListenerCustom(f: ((productId: Int) -> Unit)) {
+    private var onClickListenerCustom: ((favoriteProduct: FavoriteProduct) -> Unit)? = null
+    fun setOnClickListenerCustom(f: ((favoriteProduct: FavoriteProduct) -> Unit)) {
         Log.e("TAG", "setOnClickListenerCustom: ")
         onClickListenerCustom = f
     }

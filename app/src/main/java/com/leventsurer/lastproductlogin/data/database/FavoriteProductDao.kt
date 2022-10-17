@@ -2,6 +2,7 @@ package com.leventsurer.lastproductlogin.data.database
 
 import androidx.room.*
 import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
+import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import kotlinx.coroutines.flow.Flow
 
 @Dao
