@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_menu"
         android:title="@string/menu" />
     <item
-        android:id="@+id/ticket"
+        android:id="@+id/favoriteProductsFragment"
         android:icon="@drawable/ic_ticket"
         android:title="@string/ticket" />
     <item

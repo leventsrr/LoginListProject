@@ -98,4 +98,8 @@
             android:name="cart"
             app:argType="com.leventsurer.lastproductlogin.data.model.getAllCart.Carts" />
     </fragment>
+    <fragment
+        android:id="@+id/favoriteProductsFragment"
+        android:name="com.leventsurer.lastproductlogin.ui.fragments.FavoriteProductsFragment"
+        android:label="FavoriteProductsFragment" />
 </navigation>
