@@ -12,11 +12,11 @@
  ---
 ## Ekran Görüntüleri
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/a.PNG)
-![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/b.PNG)
+![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable/b.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/c.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/d.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/e.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/f.PNG)
-![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/i.PNG)
+![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable/i.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/g.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/h.PNG)
