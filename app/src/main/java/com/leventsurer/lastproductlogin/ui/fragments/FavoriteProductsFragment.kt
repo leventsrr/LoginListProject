@@ -62,7 +62,9 @@ class FavoriteProductsFragment : Fragment() {
     }
     // delete items from favorites
     private fun removeFromFavorities(productFavoriteStatus: ProductFavoriteStatus){
-        favoriteProductViewModel.removeProductFromFavorites(productFavoriteStatus)
+        productFavoriteStatus.isFavorite = false
+        favoriteProductViewModel.updateProductFavoriteStatus(productFavoriteStatus)
+        //favoriteProductViewModel.removeProductFromFavorites(productFavoriteStatus)
         showToastMessage(productFavoriteStatus.title)
     }
     // listen to favorite products

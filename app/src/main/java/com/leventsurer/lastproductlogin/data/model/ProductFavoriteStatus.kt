@@ -15,7 +15,7 @@ data class ProductFavoriteStatus(
     val category:String,
     val image:String,
     val rating:Double,
-    val isFavorite:Boolean = false,
+    var isFavorite:Boolean = false,
     @PrimaryKey(autoGenerate = true) val primaryId: Int = 0
     ) :Parcelable
 
