@@ -28,7 +28,6 @@ class CartFragment : Fragment() {
     private var _binding: FragmentCartBinding? = null
     private val binding: FragmentCartBinding get() = _binding!!
     private val cartViewModel: CartViewModel by viewModels()
-    private val mainActivityViewModel: MainActivityViewModel by viewModels()
     private var adapterList = ArrayList<Carts>()
     private lateinit var adapter: CartAdapter
 
@@ -38,7 +37,6 @@ class CartFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,16 +46,14 @@ class CartFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         cartRequest()
         setupAdapter()
         subscribeObserve()
-       sortCarts()
+        sortCarts()
     }
-
+    //filters shopping carts by desired number
     private fun sortCarts() {
         binding.apply {
             binding.limitCartsButton.setOnClickListener {
@@ -88,19 +84,15 @@ class CartFragment : Fragment() {
             }
         }
     }
-
-
+    //listens for the information of the shopping cart
     private  fun subscribeObserve() {
         cartViewModel.cart.observe(viewLifecycleOwner) { response ->
-
             adapterList.clear()
             adapterList.addAll(response)
-
-
-
             adapter.list = adapterList
         }
     }
+    //Connects with adapter class
     private fun setupAdapter() {
         binding.cartsList.layoutManager = LinearLayoutManager(context)
         adapter = CartAdapter()
@@ -109,12 +101,12 @@ class CartFragment : Fragment() {
             goToCartDetailFragment(cart)
         }
     }
-
+    //pass to cart detail fragment
     private fun goToCartDetailFragment(cart: Carts) {
         val action = CartFragmentDirections.actionCartFragmentToCartDetailFragment(cart)
         findNavController().navigate(action)
     }
-
+    //The request that calls the carts is discarded
     private fun cartRequest() {
         cartViewModel.getAllCart()
     }

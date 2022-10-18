@@ -43,28 +43,18 @@ class CartDetailFragment : Fragment() {
         return binding.root
     }
 
-    @Throws(ParseException::class)
-    //Parse the data format to ["Date","Time"]
-    private fun modifyDateLayout(inputDate: String): List<String> {
-
-        val allDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(inputDate)
-        val parsedDate = allDate?.let { SimpleDateFormat("dd.MM.yyyy HH:mm").format(it) }
-        return parsedDate!!.split(" ")
-    }
 
     override  fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleOnClickEvents()
-
         setupAdapter()
         getProductsQuantity()
         getProductsDetail()
-
         subscribeObserve()
         valueBind()
     }
 
-    //private var modelList=ArrayList<CartDetailProductInfo>()
+    //listens to product detail information
     private fun subscribeObserve() {
 
         mainActivityViewModel.productDetail.observe(viewLifecycleOwner, Observer {
@@ -81,6 +71,7 @@ class CartDetailFragment : Fragment() {
 
 
     }
+    //sorts shopping carts by ascending id
     private fun sortIncreasingById(originalArray: ArrayList<ProductDetail>):ArrayList<ProductDetail> {
         val sortingArray = originalArray.sortedWith(compareBy { it.id })
         val sortedArray = ArrayList<ProductDetail>()
@@ -91,6 +82,7 @@ class CartDetailFragment : Fragment() {
         }
         return sortedArray
     }
+    //Fragmented messages make api request for details of products in shopping carts data
     private fun getProductsDetail()  {
         for (product in chosenCart.products) {
             Log.e("product","productId:${product.productId}")
@@ -98,33 +90,34 @@ class CartDetailFragment : Fragment() {
                  mainActivityViewModel.getProductDetail(product.productId!!)
         }
     }
-
+    //receives data from other fragment
     private fun handleArguments() {
         arguments?.let {
             chosenCart = CartDetailFragmentArgs.fromBundle(it).cart
         }
 
     }
-
+    //binds the values that should be printed in the fragment
     private fun valueBind() {
         binding.cartDetailDate.text = modifyDateLayout(chosenCart.date!!)[0]
         binding.cartDetailTime.text = modifyDateLayout(chosenCart.date!!)[1]
 
        //binding.cartDetailTotalPrice.text =totalPrice.toString()
     }
-
+    //Connects to the adapter class
     private fun setupAdapter() {
         binding.cartDetailList.layoutManager = LinearLayoutManager(context)
         adapter = CartDetailAdapter()
         binding.cartDetailList.adapter = adapter
     }
-
+    //finds counts in shopping cart from other fragment
     private fun getProductsQuantity(){
         for(quantity in chosenCart.products){
             quantity.quantity?.let { quantityList.add(it) }
         }
         adapter.quantityList = quantityList
     }
+    //handles click events
     private fun handleOnClickEvents() {
         binding.apply {
             backToCartListButton.setOnClickListener {
@@ -132,5 +125,12 @@ class CartDetailFragment : Fragment() {
             }
         }
     }
+    //Parse the data format to ["Date","Time"]
+    @Throws(ParseException::class)
+    private fun modifyDateLayout(inputDate: String): List<String> {
 
+        val allDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(inputDate)
+        val parsedDate = allDate?.let { SimpleDateFormat("dd.MM.yyyy HH:mm").format(it) }
+        return parsedDate!!.split(" ")
+    }
 }

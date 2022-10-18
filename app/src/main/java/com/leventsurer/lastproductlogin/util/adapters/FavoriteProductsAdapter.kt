@@ -8,14 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.R
-import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
+import com.leventsurer.lastproductlogin.data.model.ProductFavoriteStatus
 import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
-import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.databinding.FavoriteProductListCardBinding
 
 class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.FavoriteProductCartHolder>() {
     private lateinit var context: Context
-    fun setFilteredList(filteredList: ArrayList<FavoriteProduct>) {
+    fun setFilteredList(filteredList: ArrayList<ProductFavoriteStatus>) {
         this.list = filteredList
         //notifyDataSetChanged()
     }
@@ -29,7 +28,7 @@ class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.F
 
     }
     //update adapter products list
-    var list = ArrayList<FavoriteProduct>()
+    var list = ArrayList<ProductFavoriteStatus>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -56,7 +55,7 @@ class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.F
             Glide.with(context).load(list[position].image).into(favoriteProductImage)
             Log.e("DENEME", "3")
             favoriteProductName.text = list[position].title
-            favoriteProductPrice.text = "${list[position].price.toString()} TL"
+            favoriteProductPrice.text = "${list[position].price} TL"
 
         }
     }
@@ -70,8 +69,8 @@ class FavoriteProductsAdapter() : RecyclerView.Adapter<FavoriteProductsAdapter.F
         }
     }
 
-    private var onClickListenerCustom: ((favoriteProduct: FavoriteProduct) -> Unit)? = null
-    fun setOnClickListenerCustom(f: ((favoriteProduct: FavoriteProduct) -> Unit)) {
+    private var onClickListenerCustom: ((productFavoriteStatus: ProductFavoriteStatus) -> Unit)? = null
+    fun setOnClickListenerCustom(f: ((productFavoriteStatus: ProductFavoriteStatus) -> Unit)) {
         Log.e("TAG", "setOnClickListenerCustom: ")
         onClickListenerCustom = f
     }

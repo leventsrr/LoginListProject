@@ -8,10 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.leventsurer.lastproductlogin.R
-import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
+import com.leventsurer.lastproductlogin.data.model.ProductFavoriteStatus
 import com.leventsurer.lastproductlogin.databinding.ProductCardBinding
 import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
-import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 
 class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
     private lateinit var context: Context
@@ -75,7 +74,7 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
         holder.binding.productFavoriteStatus.setOnClickListener {
             addToFavoritePage?.let {
                 var item = list[position]
-                it(FavoriteProduct(item.id?:-1,item.title?:"deneme",item.price?:-1.0,item.description?:"deneme",item.category?:"deneme",item.image?:"deneme",item.rating!!.rate?:1.0))
+                it(ProductFavoriteStatus(item.id?:-1,item.title?:"deneme",item.price?:-1.0,item.description?:"deneme",item.category?:"deneme",item.image?:"deneme",item.rating!!.rate?:1.0))
             }
         }
     }
@@ -88,8 +87,8 @@ class ProductAdapter() : RecyclerView.Adapter<ProductAdapter.ProductHolder>() {
         goToDetailPage = f
     }
 
-    private var addToFavoritePage: ((product: FavoriteProduct) -> Unit)? = null
-    fun addToFavoritePage(f: ((product: FavoriteProduct) -> Unit)) {
+    private var addToFavoritePage: ((product: ProductFavoriteStatus) -> Unit)? = null
+    fun addToFavoritePage(f: ((product: ProductFavoriteStatus) -> Unit)) {
         Log.e("TAG", "setOnClickListenerCustom: ")
         addToFavoritePage = f
     }

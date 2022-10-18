@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "favorite_product_table")
 @Parcelize
-data class FavoriteProduct(
+data class ProductFavoriteStatus(
     val id:Int,
     val title:String,
     val price:Double,
@@ -15,6 +15,7 @@ data class FavoriteProduct(
     val category:String,
     val image:String,
     val rating:Double,
+    val isFavorite:Boolean = false,
     @PrimaryKey(autoGenerate = true) val primaryId: Int = 0
     ) :Parcelable
 

@@ -2,7 +2,6 @@ package com.leventsurer.lastproductlogin.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,10 +15,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.leventsurer.lastproductlogin.MainActivity
 import com.leventsurer.lastproductlogin.R
-import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
+import com.leventsurer.lastproductlogin.data.model.ProductFavoriteStatus
 import com.leventsurer.lastproductlogin.databinding.FragmentProductListBinding
 import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
-import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
 import com.leventsurer.lastproductlogin.util.adapters.ProductAdapter
 import com.leventsurer.lastproductlogin.util.constants.Cons.CATEGORY_NAME_BUNDLE_KEY
 import com.leventsurer.lastproductlogin.viewModel.FavoriteProductViewModel
@@ -215,9 +213,11 @@ class ProductsListFragment : Fragment() {
         Toast.makeText(context,"$productName Added To Favorites",Toast.LENGTH_SHORT).show()
     }
     //add product to favorities
-    private fun addProductToFavorities(product:FavoriteProduct) {
-        favoriteProductViewModel.addProductToFavorities(FavoriteProduct(product.id,product.title,product.price,product.description,product.category,
-            product.image,product.rating))
+    private fun addProductToFavorities(product:ProductFavoriteStatus) {
+
+
+        favoriteProductViewModel.addProductToFavorities(ProductFavoriteStatus(product.id,product.title,product.price,product.description,product.category,
+            product.image,product.rating,true))
     }
     //sort products by price
     private fun sortTheProductArray(

@@ -4,8 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.leventsurer.lastproductlogin.data.database.FavoriteProductDao
-import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
-import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.data.model.ProductFavoriteStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,11 +15,15 @@ class FavoriteProductViewModel /*ViewModelInject*/ @Inject constructor(
 
     val favoriteProducts = favoriteProductDao.getFavoriteProducts().asLiveData()
 
-    fun removeProductFromFavorites(favoriteProduct: FavoriteProduct) = viewModelScope.launch {
-        favoriteProductDao.delete(favoriteProduct)
+    fun removeProductFromFavorites(productFavoriteStatus: ProductFavoriteStatus) = viewModelScope.launch {
+        favoriteProductDao.delete(productFavoriteStatus)
     }
 
-    fun addProductToFavorities(favoriteProduct: FavoriteProduct) = viewModelScope.launch {
-        favoriteProductDao.insert(favoriteProduct)
+    fun addProductToFavorities(productFavoriteStatus: ProductFavoriteStatus) = viewModelScope.launch {
+        favoriteProductDao.insert(productFavoriteStatus)
+    }
+
+    fun updateProductFavoriteStatus(productFavoriteStatus: ProductFavoriteStatus) = viewModelScope.launch {
+        favoriteProductDao.update(productFavoriteStatus)
     }
 }

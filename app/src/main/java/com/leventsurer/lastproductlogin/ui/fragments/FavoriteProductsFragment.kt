@@ -9,19 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.leventsurer.lastproductlogin.R
-import com.leventsurer.lastproductlogin.data.model.FavoriteProduct
-import com.leventsurer.lastproductlogin.data.model.getAllProducts.ProductItem
-import com.leventsurer.lastproductlogin.data.model.getProductDetail.ProductDetail
+import com.leventsurer.lastproductlogin.data.model.ProductFavoriteStatus
 import com.leventsurer.lastproductlogin.databinding.FragmentFavoriteProductsBinding
-import com.leventsurer.lastproductlogin.databinding.FragmentProductListBinding
 import com.leventsurer.lastproductlogin.util.adapters.FavoriteProductsAdapter
-import com.leventsurer.lastproductlogin.util.adapters.ProductAdapter
 import com.leventsurer.lastproductlogin.viewModel.FavoriteProductViewModel
-import com.leventsurer.lastproductlogin.viewModel.MainActivityViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +22,7 @@ class FavoriteProductsFragment : Fragment() {
     private var _binding: FragmentFavoriteProductsBinding? = null
     private val binding: FragmentFavoriteProductsBinding get() = _binding!!
     private val favoriteProductViewModel: FavoriteProductViewModel by viewModels()
-    private var adapterList = ArrayList<FavoriteProduct>()
+    private var adapterList = ArrayList<ProductFavoriteStatus>()
 
 
     private lateinit var searchView: SearchView
@@ -39,7 +32,6 @@ class FavoriteProductsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,16 +42,15 @@ class FavoriteProductsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupAdapter()
         subscribeObserve()
         setupSearch()
     }
-
+    //product deletion message from favorites
     private fun showToastMessage(productName:String){
         Toast.makeText(context,"$productName Deleted From Favorites", Toast.LENGTH_SHORT).show()
     }
-
+    // connects with the adapter class
     private fun setupAdapter() {
         binding.favoriteProductsList.layoutManager = LinearLayoutManager(context)
         adapter = FavoriteProductsAdapter()
@@ -69,10 +60,12 @@ class FavoriteProductsFragment : Fragment() {
         }
 
     }
-    private fun removeFromFavorities(favoriteProduct: FavoriteProduct){
-        favoriteProductViewModel.removeProductFromFavorites(favoriteProduct)
-        showToastMessage(favoriteProduct.title)
+    // delete items from favorites
+    private fun removeFromFavorities(productFavoriteStatus: ProductFavoriteStatus){
+        favoriteProductViewModel.removeProductFromFavorites(productFavoriteStatus)
+        showToastMessage(productFavoriteStatus.title)
     }
+    // listen to favorite products
     private fun subscribeObserve() {
         favoriteProductViewModel.favoriteProducts.observe(viewLifecycleOwner) { response ->
             adapterList.clear()
@@ -81,9 +74,10 @@ class FavoriteProductsFragment : Fragment() {
 
         }
     }
+    // filter products by search
     private fun filterList(newText: String) {
-        val filteredList = ArrayList<FavoriteProduct>()
-        for (productItem: FavoriteProduct in adapterList) {
+        val filteredList = ArrayList<ProductFavoriteStatus>()
+        for (productItem: ProductFavoriteStatus in adapterList) {
             if (productItem.title!!.lowercase().contains(newText.lowercase())) {
                 filteredList.add(productItem)
             }
@@ -94,6 +88,7 @@ class FavoriteProductsFragment : Fragment() {
             adapter.setFilteredList(filteredList)
         }
     }
+    // link to the search view
     private fun setupSearch() {
         searchView = binding.searchView
         searchView.clearFocus()

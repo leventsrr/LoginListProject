@@ -70,9 +70,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/navigation"
             app:popUpToInclusive="true" />
-        <action
+        <!--<action
             android:id="@+id/action_profileFragment_to_productListFragment32"
-            app:destination="@id/productListFragment3" />
+            app:destination="@id/productListFragment3" />-->
         <action
             android:id="@+id/action_profileFragment_to_cartFragment"
             app:destination="@id/cartFragment" />
