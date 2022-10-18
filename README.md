@@ -18,9 +18,5 @@
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/e.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/f.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable/i.PNG)
-<<<<<<< HEAD
-
-=======
->>>>>>> c4d4f4e79c24e7f4a5028c1e2cc3ebb56f605e46
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/g.PNG)
 ![Uygulama İçi Görsel](https://github.com/leventsrr/LoginListProject/blob/master/app/src/main/res/drawable-v24/h.PNG)
