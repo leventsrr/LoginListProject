@@ -1,5 +1,6 @@
 # LoginListProject
 İş yeri eğitiminde projelerde kullanılan yapıları öğrenmek için yaptığım proje
+### Medium Yazısı: https://medium.com/@leventsrr/dagger-hilt-kullanimi-4ce49526a740
 ---
 ## Kullanılan Yapılar
  * MVVM
